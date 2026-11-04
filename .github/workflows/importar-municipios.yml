@@ -1,0 +1,23 @@
+name: Importar municípios do IBGE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar dependências
+        run: python -m pip install 'requests>=2.31,<3'
+      - name: Importar municípios e vínculos regionais
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: python importar_municipios.py

@@ -1,0 +1,55 @@
+
+name: Atualizacao Autoridades SP
+
+on:
+  schedule:
+    # Toda segunda-feira, às 6h de Brasília
+    - cron: "0 6 * * 1"
+      timezone: "America/Sao_Paulo"
+
+  # Permite executar manualmente
+  workflow_dispatch:
+    inputs:
+      tipo:
+        description: "Tipo de coleta"
+        required: true
+        default: "semanal"
+        type: choice
+        options:
+          - semanal
+          - quinzenal
+
+permissions:
+  contents: read
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar arquivos do projeto
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executar coleta semanal
+        if: github.event_name == 'schedule' || inputs.tipo == 'semanal'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: python coletor.py --tipo semanal
+
+      - name: Executar coleta quinzenal
+        if: inputs.tipo == 'quinzenal'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: python coletor.py --tipo quinzenal

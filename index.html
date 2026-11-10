@@ -229,7 +229,16 @@ const norm=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLo
 const collator=new Intl.Collator('pt-BR',{sensitivity:'base',numeric:true});
 const sortName=(a,b)=>collator.compare(a.name||'',b.name||'');
 let data=[],current='dashboard',recipients=[],loaded=false,visibleItems=[];
-let currentUser=null,currentRole='publico',authMode='login',authBusy=false,recoveryActive=false;
+// Detecta redirecionamentos de recuperação ANTES da inicialização do Supabase,
+// que pode consumir os parâmetros de autenticação da URL.
+const recoveryLandingHint=(()=>{
+ try{
+  const hash=new URLSearchParams(window.location.hash.replace(/^#/,''));
+  const query=new URLSearchParams(window.location.search);
+  return hash.get('type')==='recovery'||query.get('type')==='recovery';
+ }catch{return false}
+})();
+let currentUser=null,currentRole='publico',authMode='login',authBusy=false,recoveryActive=recoveryLandingHint;
 const sb=window.supabase?.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 const selectedIds=new Set();
@@ -579,9 +588,21 @@ async function syncAuthAndData(){
 }
 function initV3(){
  if(!sb){$('syncBadge').textContent='Biblioteca de login indisponível';$('syncNotice').textContent='Conecte-se à internet para testar o login e as consultas seguras.';maybeShowSignupWelcome();return}
- sb.auth.onAuthStateChange((event)=>{
+ sb.auth.onAuthStateChange((event,session)=>{
   if(event==='PASSWORD_RECOVERY'){
-    recoveryActive=true;setTimeout(()=>openAuth('newpass'),0);
+    recoveryActive=true;
+    setTimeout(()=>{openAuth('newpass');syncAuthAndData()},0);
+  }else if(event==='INITIAL_SESSION'&&recoveryLandingHint){
+    // Recuperação não deve cair no cadastro automático de visitantes.
+    setTimeout(()=>{
+      if(!recoveryActive||authMode==='newpass')return;
+      if(session){openAuth('newpass')}
+      else{
+        recoveryActive=false;
+        openAuth('forgot');
+        authFeedback('O link de recuperação não está mais válido. Solicite um novo link.',true);
+      }
+    },0);
   }else if(['SIGNED_IN','SIGNED_OUT','TOKEN_REFRESHED','USER_UPDATED'].includes(event)){
     setTimeout(()=>syncAuthAndData(),0);
   }

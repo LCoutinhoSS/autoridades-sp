@@ -226,6 +226,33 @@ body[data-mode=dark] .card{box-shadow:0 12px 33px rgba(0,0,0,.22)}
 .admin-history-undo-row button{font-size:12px;font-weight:650;min-height:37px}
 .admin-history-reversal{color:#2e7852;font-weight:700}
 body[data-mode=dark] .admin-history-reversal{color:#81d7ac}
+
+/* Autoridades SP 3.6 — usuários e funções (somente ADM) */
+.admin-users-card{scroll-margin-top:18px;background:color-mix(in srgb,var(--surface) 91%,transparent);backdrop-filter:blur(16px)}
+.admin-users-header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.admin-users-toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 13px}
+.admin-users-toolbar input{flex:2 1 250px;min-width:0}
+.admin-users-toolbar select{flex:1 1 170px;max-width:235px}
+.admin-users-summary{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.admin-users-summary .tag{font-size:12px;padding:7px 10px;background:color-mix(in srgb,var(--surface) 88%,var(--line))}
+.admin-users-list{display:grid;gap:9px;margin:12px 0}
+.admin-user-item{display:grid;grid-template-columns:minmax(185px,2fr) minmax(190px,1.2fr) auto;align-items:center;gap:15px;padding:14px;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 93%,transparent);border-radius:14px}
+.admin-user-name{min-width:0;overflow-wrap:anywhere;color:var(--ink);font-size:13px;font-weight:700}
+.admin-user-meta{font-size:11px;line-height:1.65;color:var(--muted);margin-top:5px}
+.admin-user-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.admin-user-controls select{min-width:165px;max-width:205px;font-size:13px}
+.admin-user-controls button{white-space:nowrap;font-size:12px}
+.admin-user-locked{color:var(--muted);font-size:12px;line-height:1.5}
+.admin-user-audit{margin-top:17px;padding:18px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--surface) 89%,transparent)}
+.admin-user-audit[hidden]{display:none!important}
+.admin-user-audit-header{display:flex;justify-content:space-between;gap:9px;align-items:flex-start;flex-wrap:wrap;margin:0 0 14px}
+.admin-user-audit-header h4{margin:0 0 5px;color:var(--ink)}
+.admin-audit-event{padding:12px 14px;border:1px solid var(--line);border-radius:11px;margin-top:8px;font-size:13px}
+.admin-audit-date{color:var(--muted);font-size:11px;line-height:1.5;margin-top:5px}
+.admin-user-subnote{margin-top:11px;font-size:12px;color:var(--muted);line-height:1.6}
+@media(max-width:1100px){.admin-user-item{grid-template-columns:1fr}.admin-user-controls{justify-content:flex-start}}
+@media(max-width:600px){.admin-users-toolbar select{max-width:none}.admin-user-controls select{min-width:0;width:100%;max-width:none}.admin-user-controls button{flex:1}}
+
 </style>
 </head>
 <body>
@@ -255,7 +282,30 @@ body[data-mode=dark] .admin-history-reversal{color:#81d7ac}
 <div class="admin-feature-grid">
   <div class="admin-feature"><span class="admin-feature-icon">◉</span><strong>Visibilidade por perfil</strong><span>Escolha quais informações cada perfil pode consultar. Alterações gravadas diretamente no banco.</span></div>
   <div class="admin-feature"><span class="admin-feature-icon">♙</span><strong>Autoridades e contatos</strong><span>Cadastre, edite e consulte o histórico das autoridades, preservando correções manuais da coleta automática.</span><button class="secondary admin-feature-action" type="button" onclick="openAdminAuthorityForm()">+ Nova autoridade</button> <button class="secondary admin-feature-action" type="button" onclick="openAdminEditPanel()">✎ Editar autoridade</button></div>
-  <div class="admin-feature soon"><span class="admin-feature-icon">♧</span><strong>Usuários e funções</strong><span>Aprovação de contas, atribuição de perfis e permissões individuais.</span></div>
+  <div class="admin-feature"><span class="admin-feature-icon">♧</span><strong>Usuários e funções</strong><span>Consulte contas, altere perfis permitidos e acompanhe o histórico de mudanças.</span><button class="secondary admin-feature-action" type="button" onclick="openAdminUsersPanel()">Gerenciar usuários</button></div>
+</div>
+<div class="card admin-users-card" id="adminUsersCard">
+  <div class="admin-users-header">
+    <div><h3 style="margin:0 0 6px">Central de Usuários</h3><p class="sub" style="margin:0">Controle de acesso por perfil, diretamente pelo Supabase Auth.</p></div>
+    <button type="button" class="secondary" id="adminUsersRefresh" onclick="loadAdminUsers(true)">↻ Atualizar lista</button>
+  </div>
+  <div class="hint" style="margin:15px 0 12px"><strong>Segurança:</strong> administradores atuais e sua própria conta estão protegidos contra alteração. Promover alguém a ADM concede amplos privilégios e não poderá ser desfeito por este painel. As permissões são <strong>por perfil</strong> na seção abaixo; aprovação individual de contas ainda não está implementada.</div>
+  <div id="adminUsersSummary" class="admin-users-summary" aria-label="Resumo dos usuários"></div>
+  <div class="admin-users-toolbar">
+    <input type="search" id="adminUsersSearch" placeholder="Buscar por e-mail..." aria-label="Pesquisar usuários" oninput="renderAdminUsers()" autocomplete="off">
+    <select id="adminUsersFilter" aria-label="Filtrar por perfil" onchange="renderAdminUsers()"><option value="">Todos os perfis</option><option value="usuario">Usuário cadastrado</option><option value="cerimonial">Cerimonial</option><option value="administracao">Administração</option><option value="sem_perfil">Sem perfil associado</option></select>
+  </div>
+  <p id="adminUsersStatus" class="admin-feedback" role="status" aria-live="polite">Aguardando acesso administrativo...</p>
+  <div id="adminUsersList" class="admin-users-list"></div>
+  <div class="admin-user-audit" id="adminUserAuditPanel" hidden>
+    <div class="admin-user-audit-header">
+      <div><h4 id="adminUserAuditTitle">Histórico de perfis</h4><p class="sub" style="margin:0">Quem alterou o perfil, quando e de qual perfil para qual.</p></div>
+      <button class="secondary" type="button" onclick="closeAdminUserAudit()">Fechar histórico</button>
+    </div>
+    <p class="admin-feedback" id="adminUserAuditStatus" role="status" aria-live="polite">Consultando o histórico...</p>
+    <div id="adminUserAuditEvents"></div>
+  </div>
+  <div class="admin-user-subnote">O perfil <b>Sem cadastro</b> pertence aos visitantes anônimos e não aparece como uma conta. Esta tela não envia convites, não exclui usuários e não altera senhas.</div>
 </div>
 <div class="card admin-permission-card">
  <div class="admin-panel-heading">
@@ -331,7 +381,7 @@ body[data-mode=dark] .admin-history-reversal{color:#81d7ac}
 </div>
 <div class="card"><h3>Exportação administrativa</h3><p class="sub">Baixe somente os dados que sua sessão atual está autorizada a consultar. As correções manuais são mantidas separadamente dos dados coletados.</p><button class="secondary" onclick="backup()">Baixar dados consultados (JSON)</button></div>
 </section>
-<footer>Autoridades SP 3.5 · Consulta institucional de informações públicas e autorizadas · Confira contatos nas fontes oficiais antes do uso.</footer>
+<footer>Autoridades SP 3.6 · Consulta institucional de informações públicas e autorizadas · Confira contatos nas fontes oficiais antes do uso.</footer>
 </main><div class="mobile-list-bar"><button class="primary" onclick="openGeneratorFromSearch()">Ver lista selecionada (<span id="mobileSelectedCount">0</span>)</button></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -439,7 +489,7 @@ async function loadUpdates(){try{
  const success=records.find(x=>['concluido','sucesso','concluida'].includes(x.status));
  $('updateHistory').innerHTML='<p><b>Última coleta concluída:</b> '+escapeHtml(fmt(success?.finalizado_em))+'</p>'+(records.length?'<div style="overflow:auto"><table><thead><tr><th>Tipo</th><th>Início</th><th>Fim</th><th>Status</th><th>Processados</th><th>Pendentes</th></tr></thead><tbody>'+records.map(x=>'<tr><td>'+escapeHtml(x.tipo)+'</td><td>'+escapeHtml(fmt(x.iniciado_em))+'</td><td>'+escapeHtml(fmt(x.finalizado_em))+'</td><td>'+escapeHtml(x.status)+'</td><td>'+Number(x.registros_atualizados||0)+'</td><td>'+Number(x.registros_pendentes||0)+'</td></tr>').join('')+'</tbody></table></div>':'<p>Nenhuma execução registrada.</p>');
  }catch(e){$('updateHistory').textContent='Histórico não disponível para leitura pública. A tabela de atualizações pode exigir uma política SELECT no Supabase.'}}
-function go(id){if(id==='administracao'&&currentRole!=='administracao')id='dashboard';current=id;const isCategory=!!categories[id];document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===(isCategory?'buscar':id)));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));$('heading').textContent=isCategory?categories[id]:({dashboard:'Dashboard',buscar:'Buscar autoridades',gerador:'Gerador de listas',pendencias:'Pendências',atualizacoes:'Atualizações',fontes:'Fontes oficiais',administracao:'Administração',aparencia:'Aparência'}[id]||id);$('subtitle').textContent=isCategory?'Contatos institucionais em ordem alfabética.':id==='dashboard'?'Situação da base de contatos institucionais.':'Consulta à base online.';if(isCategory)$('category').value=id;else if(id==='buscar')$('category').value='';refresh();if(isCategory||id==='buscar')renderTable();if(id==='atualizacoes')loadUpdates();if(id==='gerador')updateSelectionCount();if(id==='aparencia')renderThemeOptions();if(id==='administracao'){loadAdminPermissions();renderAdminEditResults();}window.scrollTo(0,0)}
+function go(id){if(id==='administracao'&&currentRole!=='administracao')id='dashboard';current=id;const isCategory=!!categories[id];document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===(isCategory?'buscar':id)));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));$('heading').textContent=isCategory?categories[id]:({dashboard:'Dashboard',buscar:'Buscar autoridades',gerador:'Gerador de listas',pendencias:'Pendências',atualizacoes:'Atualizações',fontes:'Fontes oficiais',administracao:'Administração',aparencia:'Aparência'}[id]||id);$('subtitle').textContent=isCategory?'Contatos institucionais em ordem alfabética.':id==='dashboard'?'Situação da base de contatos institucionais.':'Consulta à base online.';if(isCategory)$('category').value=id;else if(id==='buscar')$('category').value='';refresh();if(isCategory||id==='buscar')renderTable();if(id==='atualizacoes')loadUpdates();if(id==='gerador')updateSelectionCount();if(id==='aparencia')renderThemeOptions();if(id==='administracao'){loadAdminPermissions();renderAdminEditResults();loadAdminUsers();}window.scrollTo(0,0)}
 const navIcons={dashboard:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',deputado_estadual:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/>',buscar:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',secretario_estadual:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 5V3h8v2M3 11h18"/>',secretario_municipal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 5V3h8v2M3 11h18"/>',vereador:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>',prefeito:'<path d="M3 10 12 3l9 7M5 10v11h14V10M9 21v-7h6v7"/>',gerador:'<path d="M8 6h13M8 12h13M8 18h13M3 6h1M3 12h1M3 18h1"/>',pendencias:'<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',atualizacoes:'<path d="M20 7v5h-5M4 17v-5h5"/><path d="M5 9a8 8 0 0 1 14-2l1 5M4 12l1 5a8 8 0 0 0 14-2"/>',fontes:'<path d="m3 10 9-7 9 7M4 10h16M6 10v10M10 10v10M14 10v10M18 10v10M3 21h18"/>',aparencia:'<path d="m14.5 6.5 3 3M3 21l5.5-1.2L20.1 8.2a2.1 2.1 0 0 0-3-3L5.5 16.8 3 21Z"/><path d="m13.5 7.5 3 3"/>',administracao:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/>'};
 function renderNavigation(){$('nav').innerHTML=menu.filter(([id])=>id!=='administracao'||currentRole==='administracao').map(([id,label])=>'<button data-page="'+id+'" onclick="'+(id==='gerador'?'openGeneratorFromSearch()':"go('"+id+"')")+'"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:10px">'+(navIcons[id]||navIcons.dashboard)+'</svg>'+escapeHtml(label.replace(/^[^A-Za-zÀ-ÿ]+/,''))+'</button>').join('');}
 renderNavigation();
@@ -664,6 +714,158 @@ async function saveAdminPermissions(){
  }
 }
 
+
+
+/* Autoridades SP 3.6 — central segura de usuários. */
+const USER_ROLE_NAMES={usuario:'Usuário cadastrado',cerimonial:'Cerimonial',administracao:'Administração',sem_perfil:'Sem perfil associado'};
+let adminUsersData=null,adminUsersLoading=false,adminUsersSaving=null,adminUsersTicket=0,adminAuditTicket=0;
+const userRoleLabel=role=>USER_ROLE_NAMES[role]||role||'Não informado';
+const isAdminSelf=id=>Boolean(currentUser&&id===currentUser.id);
+function resetAdminUsersState(){
+ adminUsersTicket++;adminAuditTicket++;adminUsersData=null;adminUsersLoading=false;adminUsersSaving=null;
+ if($('adminUsersList'))$('adminUsersList').replaceChildren();
+ if($('adminUsersSummary'))$('adminUsersSummary').replaceChildren();
+ if($('adminUserAuditPanel'))$('adminUserAuditPanel').hidden=true;
+ if($('adminUsersStatus'))adminUsersStatus('Aguardando acesso administrativo...');
+}
+function adminUsersStatus(message,kind=''){
+ const el=$('adminUsersStatus');if(!el)return;
+ el.textContent=message;el.className='admin-feedback'+(kind?' '+kind:'');
+}
+function openAdminUsersPanel(){
+ if(currentRole!=='administracao')return;
+ go('administracao');
+ $('adminUsersCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+async function loadAdminUsers(force=false){
+ if(currentRole!=='administracao'||!currentUser||!sb)return;
+ if(adminUsersLoading||adminUsersSaving)return;
+ if(adminUsersData&&!force){renderAdminUsers();return;}
+ const ticket=++adminUsersTicket;
+ adminUsersLoading=true;
+ $('adminUsersRefresh').disabled=true;
+ adminUsersStatus('Consultando usuários no Supabase...');
+ try{
+  const {data:rows,error}=await sb.rpc('listar_usuarios_administracao');
+  if(error)throw error;
+  if(ticket!==adminUsersTicket||currentRole!=='administracao')return;
+  adminUsersData=Array.isArray(rows)?rows:[];
+  renderAdminUsers();
+ }catch(err){
+  if(ticket!==adminUsersTicket)return;
+  adminUsersData=null;
+  $('adminUsersList').innerHTML='<p class="sub">Não foi possível consultar a lista de contas.</p>';
+  $('adminUsersSummary').replaceChildren();
+  adminUsersStatus('Falha na consulta: '+friendlyAuthError(err)+'. Verifique se a função listar_usuarios_administracao está instalada.','bad');
+ }finally{
+  if(ticket===adminUsersTicket){adminUsersLoading=false;$('adminUsersRefresh').disabled=false;}
+ }
+}
+function renderAdminUsers(){
+ if(currentRole!=='administracao')return;
+ const list=$('adminUsersList');
+ if(!Array.isArray(adminUsersData))return;
+ const totals={usuario:0,cerimonial:0,administracao:0,sem_perfil:0};
+ for(const u of adminUsersData)totals[u.perfil]=(totals[u.perfil]||0)+1;
+ $('adminUsersSummary').innerHTML='<span class="tag">'+adminUsersData.length+' conta(s)</span>'+
+  Object.entries(totals).filter(([,count])=>count>0).map(([role,count])=>'<span class="tag">'+escapeHtml(userRoleLabel(role))+': '+count+'</span>').join('');
+ const term=norm($('adminUsersSearch').value);
+ const filter=$('adminUsersFilter').value;
+ const rows=adminUsersData.filter(u=>(!filter||u.perfil===filter)&&(!term||norm([u.email,u.perfil,userRoleLabel(u.perfil)].join(' ')).includes(term)));
+ if(!rows.length){list.innerHTML='<div class="empty">Nenhuma conta encontrada com esses filtros.</div>';adminUsersStatus('Exibindo 0 de '+adminUsersData.length+' conta(s).');return;}
+ list.innerHTML=rows.map(u=>{
+  const id=escapeHtml(u.usuario_id||'');
+  const role=u.perfil||'sem_perfil';
+  const blocked=role==='administracao'||isAdminSelf(u.usuario_id)||role==='sem_perfil'||Boolean(adminUsersSaving);
+  const hint=role==='administracao'?'Conta administrativa protegida':isAdminSelf(u.usuario_id)?'Sua própria conta está protegida':role==='sem_perfil'?'Perfil ausente: manutenção necessária no Supabase':'Alteração sujeita a confirmação';
+  const name=escapeHtml(u.email||'E-mail não informado');
+  const roleField=blocked?'<div class="admin-user-locked">🔒 '+escapeHtml(userRoleLabel(role))+'<div class="admin-user-meta">'+escapeHtml(hint)+'</div></div>':
+   '<select aria-label="Novo perfil de '+name+'" data-user-id="'+id+'" onchange="adminUserRoleSelectionChanged(this)" class="admin-user-role-select"><option value="usuario" '+(role==='usuario'?'selected':'')+'>Usuário cadastrado</option><option value="cerimonial" '+(role==='cerimonial'?'selected':'')+'>Cerimonial</option><option value="administracao">Administração</option></select>';
+  const save=blocked?'':'<button class="primary" type="button" data-user-id="'+id+'" onclick="saveAdminUserProfile(this.dataset.userId)" disabled>Aplicar</button>';
+  return '<div class="admin-user-item"><div><div class="admin-user-name">'+name+(isAdminSelf(u.usuario_id)?' <span class="tag">Você</span>':'')+'</div><div class="admin-user-meta">Cadastro: '+escapeHtml(fmt(u.cadastrado_em))+' · Último acesso: '+escapeHtml(fmt(u.ultimo_acesso))+'</div></div><div>'+roleField+'</div><div class="admin-user-controls">'+save+'<button class="secondary" type="button" data-user-id="'+id+'" onclick="showAdminUserAudit(this.dataset.userId)">Histórico</button></div></div>';
+ }).join('');
+ adminUsersStatus('Exibindo '+rows.length+' de '+adminUsersData.length+' conta(s). Alterações só serão aplicadas após sua confirmação.','good');
+}
+function adminUserRoleSelectionChanged(el){
+ const user=adminUsersData?.find(u=>u.usuario_id===el.dataset.userId);
+ if(!user)return;
+ const parent=el.closest('.admin-user-item');
+ const button=parent?.querySelector('button.primary');
+ if(button)button.disabled=adminUsersSaving!==null||el.value===user.perfil;
+}
+async function saveAdminUserProfile(id){
+ if(currentRole!=='administracao'||!currentUser||!sb||adminUsersSaving||!Array.isArray(adminUsersData))return;
+ const row=adminUsersData.find(u=>u.usuario_id===id);
+ const select=Array.from(document.querySelectorAll('.admin-user-role-select')).find(el=>el.dataset.userId===id);
+ if(!row||!select||row.perfil==='administracao'||isAdminSelf(id)||row.perfil==='sem_perfil')return;
+ const next=select.value;
+ if(!['usuario','cerimonial','administracao'].includes(next)||next===row.perfil)return;
+ const who=row.email||id;
+ let message='Alterar o perfil de '+who+'?\n\n'+userRoleLabel(row.perfil)+' → '+userRoleLabel(next)+'\n\nA mudança será aplicada imediatamente e registrada na auditoria.';
+ if(next==='administracao')message+='\n\nATENÇÃO: esse usuário poderá gerenciar contatos, permissões e outras contas. Por segurança, esta tela NÃO permite rebaixar administradores. Para desfazer, será necessária manutenção controlada no Supabase.';
+ if(!confirm(message))return;
+ if(next==='administracao'&&prompt('Para conceder ADMINISTRAÇÃO a '+who+', digite PROMOVER:')!=='PROMOVER')return;
+ adminUsersSaving=id;
+ const button=select.closest('.admin-user-item')?.querySelector('button.primary');
+ if(button)button.disabled=true;
+ $('adminUsersRefresh').disabled=true;
+ adminUsersStatus('Gravando o novo perfil com validação no Supabase...');
+ try{
+  const {data:result,error}=await sb.rpc('alterar_perfil_usuario',{p_usuario_id:id,p_novo_perfil:next});
+  if(error)throw error;
+  if(result!=='Perfil alterado com sucesso')throw Error('O banco não confirmou uma mudança de perfil. Retorno: '+String(result??'vazio'));
+  adminUsersSaving=null;
+  adminUsersData=null;
+  await loadAdminUsers(true);
+  if(currentRole!=='administracao')return;
+  adminUsersStatus('Perfil de '+who+' atualizado para '+userRoleLabel(next)+'. A alteração foi enviada ao histórico.','good');
+  if(!$('adminUserAuditPanel').hidden&&$('adminUserAuditPanel').dataset.userId===id)await showAdminUserAudit(id);
+ }catch(err){
+  adminUsersStatus('Não foi possível confirmar a alteração: '+friendlyAuthError(err)+'. Atualize a lista antes de tentar novamente.','bad');
+ }finally{
+  adminUsersSaving=null;
+  $('adminUsersRefresh').disabled=false;
+  // Respeitar eventuais alterações de outro administrador. Não manter seleção desatualizada.
+  if(adminUsersData){
+   const statusText=$('adminUsersStatus').textContent,statusClass=$('adminUsersStatus').className;
+   renderAdminUsers();
+   $('adminUsersStatus').textContent=statusText;$('adminUsersStatus').className=statusClass;
+  }
+ }
+}
+function closeAdminUserAudit(){
+ adminAuditTicket++;
+ $('adminUserAuditPanel').hidden=true;
+ $('adminUserAuditPanel').removeAttribute('data-user-id');
+}
+async function showAdminUserAudit(id){
+ if(currentRole!=='administracao'||!currentUser||!sb||!id)return;
+ const ticket=++adminAuditTicket;
+ const panel=$('adminUserAuditPanel');
+ panel.hidden=false;panel.dataset.userId=id;
+ const user=adminUsersData?.find(u=>u.usuario_id===id);
+ $('adminUserAuditTitle').textContent='Histórico de perfis · '+(user?.email||'Usuário selecionado');
+ $('adminUserAuditStatus').textContent='Carregando alterações de perfil...';
+ $('adminUserAuditStatus').className='admin-feedback';
+ $('adminUserAuditEvents').replaceChildren();
+ panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+ try{
+  const {data:rows,error}=await sb.from('historico_perfis_usuarios')
+    .select('id,usuario_id,perfil_anterior,perfil_novo,alterado_por,alterado_em')
+    .eq('usuario_id',id).order('alterado_em',{ascending:false}).limit(50);
+  if(error)throw error;
+  if(ticket!==adminAuditTicket||currentRole!=='administracao'||panel.dataset.userId!==id)return;
+  $('adminUserAuditStatus').textContent=(rows||[]).length+' alteração(ões) encontrada(s) · até 50 eventos mais recentes.';
+  $('adminUserAuditEvents').innerHTML=rows?.length?rows.map(h=>{
+   const actor=adminUsersData?.find(u=>u.usuario_id===h.alterado_por)?.email || (h.alterado_por===currentUser?.id?currentUser.email:null) || (h.alterado_por?'Usuário '+h.alterado_por.slice(0,8)+'…':'Responsável não identificado');
+   return '<div class="admin-audit-event"><strong>'+escapeHtml(userRoleLabel(h.perfil_anterior))+' → '+escapeHtml(userRoleLabel(h.perfil_novo))+'</strong><div class="admin-audit-date">'+escapeHtml(fmt(h.alterado_em))+' · Alterado por '+escapeHtml(actor)+'</div></div>';
+  }).join(''):'<p class="sub">Ainda não existem mudanças de perfil registradas desde a instalação da auditoria. O cadastro inicial não é contado como alteração.</p>';
+ }catch(err){
+  if(ticket!==adminAuditTicket)return;
+  $('adminUserAuditStatus').textContent='Não foi possível consultar a auditoria: '+friendlyAuthError(err)+'. Confira a política RLS da tabela historico_perfis_usuarios.';
+  $('adminUserAuditStatus').className='admin-feedback bad';
+ }
+}
 
 /* Autoridades SP 3.3 — cadastro via RPC, sem acesso direto à tabela autoridades. */
 let newAuthorityBusy=false;
@@ -1227,7 +1429,7 @@ async function syncAuthAndData(){
     else role='usuario'; // ausência de perfil não concede privilégios
   }
   if(ticket!==syncCounter)return;
-  currentUser=user;currentRole=role;if(role!=='administracao'){adminRows=null;adminWorking.clear();adminOriginal.clear();cancelEditAuthority();}
+  currentUser=user;currentRole=role;if(role!=='administracao'){adminRows=null;adminWorking.clear();adminOriginal.clear();cancelEditAuthority();resetAdminUsersState();}
   $('authTopButton').textContent=user?'Minha conta · '+(role==='administracao'?'ADM':role==='cerimonial'?'Cerimonial':'Usuário'):'Entrar / Criar conta';
   renderNavigation();
   if(current==='administracao'&&role!=='administracao')go('dashboard');

@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Autoridades SP 3.7 — Acesso Cerimonial</title>
+<title>Autoridades SP 4.1 — Navegação e fontes dinâmicas</title>
 <style>
 :root{font-family:Inter,Arial,sans-serif;color:#1d2939;background:#f4f6fa}*{box-sizing:border-box}body{margin:0}aside{width:252px;background:#10243d;color:#cbd6e4;position:fixed;inset:0 auto 0 0;padding:25px 14px;overflow:auto}aside h2{color:white;margin:0 10px 4px;font-size:21px}aside small{display:block;margin:0 10px 28px;color:#9bb0c8}nav button{display:block;width:100%;background:none;border:0;color:inherit;text-align:left;padding:12px 14px;border-left:3px solid transparent;border-radius:5px;cursor:pointer;font-size:14px;margin:2px 0}nav button:hover,nav button.active{background:#ffffff19;color:white}nav button.active{border-left-color:#d4aa54}main{margin-left:252px;padding:34px;max-width:1600px}header{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}h1{font-size:27px;color:#10243d;margin:0 0 7px}p.muted{color:#667085;margin:0 0 25px}.pill{font-size:12px;border-radius:30px;padding:7px 11px;background:#fff1d6;color:#815500;font-weight:600}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:white;border:1px solid #e2e7ee;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 2px 6px #15263b06}.stat{font-size:29px;color:#10243d;font-weight:750;margin-bottom:6px}.sub{font-size:13px;color:#64748b;line-height:1.55}h3{margin:4px 0 17px;color:#10243d}button.primary{background:#153a62;color:white;border:0;border-radius:6px;padding:11px 16px;cursor:pointer}button.secondary{background:white;color:#153a62;border:1px solid #cbd5e1;border-radius:6px;padding:10px 14px;cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input,select,textarea{padding:11px;border:1px solid #ccd5e0;border-radius:6px;width:100%;font:inherit;background:white}label{display:block;font-size:13px;color:#475467;margin:0 0 6px;font-weight:600}.field{margin-bottom:15px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px}.toolbar input{flex:1;min-width:240px}.toolbar select{max-width:230px}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:#667085;background:#f8fafc;font-size:12px}td,th{padding:13px 11px;border-bottom:1px solid #edf0f4;vertical-align:top}td button{background:none;border:0;color:#145b96;cursor:pointer}.tag{padding:4px 8px;border-radius:20px;background:#f1f5f9;font-size:11px;display:inline-block}section{display:none}section.on{display:block}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.empty{padding:35px 20px;text-align:center;color:#667085}.hint{background:#fff8e8;border:1px solid #f4e3bd;padding:14px;border-radius:8px;font-size:13px;color:#805b1d;margin-bottom:20px;line-height:1.5}.check{display:flex;gap:8px;align-items:center;margin:12px 0;font-size:14px}.check input{width:auto}.search-help{display:flex;gap:8px;flex-wrap:wrap;margin:-5px 0 16px}.search-help button{border:1px solid #d6dfe9;background:#f8fafc;color:#36516d;border-radius:20px;padding:7px 10px;font-size:12px;cursor:pointer}.search-help button:hover{background:#e8eff7}.table-check{width:17px;height:17px;cursor:pointer}.selection-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0 17px}.selection-bar .sub{margin-right:auto}.small-note{font-size:12px;color:#667085;margin:8px 0 14px}.badge-region{color:#385674;font-size:12px;margin-top:5px}.actions{display:flex;gap:8px;flex-wrap:wrap}footer{margin-top:35px;color:#8995a6;font-size:12px}@media(max-width:850px){aside{position:static;width:100%;padding:15px}aside small{margin-bottom:10px}nav{display:flex;overflow:auto}nav button{min-width:150px}main{margin:0;padding:20px}.cards,.grid2{grid-template-columns:1fr}.card{overflow-x:auto}}
 
@@ -280,30 +280,78 @@ body[data-mode=dark] .admin-history-reversal{color:#81d7ac}
 .admin-access-toolbar{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:14px 0}
 .admin-access-toolbar select{max-width:235px}
 @media(max-width:720px){.admin-access-toolbar select{max-width:none}.admin-access-actions button{flex:1}}
+
+/* Autoridades SP 4.1 — navegação compacta, avisos reativos e fontes verificáveis */
+nav{gap:5px}
+nav button{width:100%;gap:9px}
+nav button.active{background:rgba(255,255,255,.18)}
+.nav-group{margin:3px 0}
+.nav-group-toggle{justify-content:space-between;text-align:left;font-weight:650}
+.nav-group-toggle .nav-arrow{margin-left:auto;transition:transform .2s;opacity:.65;font-size:12px}
+.nav-group-toggle[aria-expanded="true"] .nav-arrow{transform:rotate(180deg)}
+.nav-group-toggle.is-current{background:#ffffff16;color:white}
+.nav-children{margin:3px 0 8px 13px;padding-left:9px;border-left:1px solid #ffffff29;display:grid;gap:2px}
+.nav-children[hidden]{display:none!important}
+.nav-children button{font-size:12.5px;min-height:36px;padding:8px 10px;border-radius:9px;color:#cbd6e4}
+.nav-children button.active{background:#ffffff20;color:white;font-weight:700;box-shadow:inset 3px 0 0 var(--accent)}
+.nav-subhead{margin:9px 8px 3px;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#92a9c1;font-weight:750}
+.visitor-access-banner{margin:8px 0 16px;padding:22px 23px;border:1px solid color-mix(in srgb,var(--accent) 55%,var(--line));border-left:5px solid var(--accent);background:linear-gradient(115deg,color-mix(in srgb,var(--surface) 93%,transparent),color-mix(in srgb,var(--surface) 92%,#fff0ce));box-shadow:0 15px 38px rgba(20,44,73,.10)}
+.visitor-access-title{font-size:17px;color:var(--ink);margin-bottom:12px}
+.visitor-access-title>span:first-child{font-size:18px;color:var(--accent)}
+.visitor-access-actions{min-width:174px}
+.visitor-access-actions .primary{font-weight:750;min-height:46px;box-shadow:0 8px 18px rgba(21,58,98,.17)}
+.visitor-access-actions small{line-height:1.45;max-width:175px}
+.system-notice{margin:8px 0 20px;background:color-mix(in srgb,var(--surface) 81%,#e8f3ff);border-color:color-mix(in srgb,var(--line) 65%,#b1d5ef);color:var(--ink);border-radius:13px;padding:13px 16px}
+.system-notice.notice-success{background:color-mix(in srgb,var(--surface) 82%,#dbf4e7);border-color:color-mix(in srgb,var(--line) 58%,#8fcca9)}
+.system-notice.notice-error{background:color-mix(in srgb,var(--surface) 80%,#ffe6e4);border-color:#eeb4b0;color:#8e2c28}
+.pending-item{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}
+.pending-item:last-child{border-bottom:0}.pending-item strong{display:block;margin-bottom:5px;color:var(--ink)}
+.pending-item .sub{margin:0;overflow-wrap:anywhere}.pending-item button{font-size:12px;white-space:nowrap;flex-shrink:0}
+.contact-info{display:inline-block;position:relative;vertical-align:middle;margin-left:4px}
+.contact-info summary{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:color-mix(in srgb,var(--surface) 70%,#dbe7f5);border:1px solid var(--line);color:var(--brand);font-weight:750;cursor:pointer;list-style:none}
+.contact-info summary::-webkit-details-marker{display:none}.contact-info summary:focus-visible{outline:2px solid var(--accent)}
+.contact-info .contact-info-panel{display:block;position:absolute;z-index:8;right:0;top:calc(100% + 6px);width:min(300px,65vw);padding:12px;border-radius:12px;background:var(--surface);border:1px solid var(--line);box-shadow:0 12px 26px #10243d2c;font-size:12px;color:var(--ink);line-height:1.5;overflow-wrap:anywhere}
+.contact-info-panel a{word-break:break-all}
+.tag-verified{background:color-mix(in srgb,var(--surface) 55%,#d3f3e1);color:#177245;border-color:#9ed7b4}
+.tag-pending{background:color-mix(in srgb,var(--surface) 70%,#fff0d8);color:#885d12;border-color:#edd2a1}
+.source-stat{font-size:12px;color:var(--muted);margin:14px 0 17px}
+.source-group{border:1px solid var(--line);border-radius:15px;background:color-mix(in srgb,var(--surface) 91%,transparent);padding:17px;margin:12px 0}
+.source-group-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:7px}
+.source-group-head h4{margin:0;color:var(--ink);font-size:15px}.source-group .sub{overflow-wrap:anywhere}
+.source-link-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px;max-height:310px;overflow:auto}
+.source-link-list li{font-size:12px;padding:7px 9px;border:1px solid var(--line);border-radius:9px;overflow-wrap:anywhere}
+.source-link-list a{word-break:break-all}.source-group details{margin-top:11px}
+.source-group details summary{cursor:pointer;color:var(--brand);font-size:12px;font-weight:650}
+body[data-mode=dark] .contact-info summary,body[data-mode=dark] .source-group details summary{color:#d8e8fa}
+body[data-mode=dark] .system-notice{background:color-mix(in srgb,var(--surface) 83%,#254c59);border-color:var(--line);color:var(--ink)}
+body[data-mode=dark] .system-notice.notice-error{background:#4a282a;border-color:#8b4c4f;color:#ffe7e3}
+@media(max-width:850px){nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:5px}.nav-group{grid-column:1/-1}.nav-children{grid-template-columns:repeat(2,minmax(0,1fr));margin-right:7px}nav button{min-width:0}nav button:nth-child(2),nav button:nth-child(8),nav button:nth-child(12){margin-top:0}nav button:nth-child(2)::before,nav button:nth-child(8)::before,nav button:nth-child(12)::before{display:none}.visitor-access-banner{padding:18px}.visitor-access-actions{width:100%;margin:0}.visitor-access-actions small{max-width:none}.pending-item{flex-direction:column}.contact-info .contact-info-panel{left:0;right:auto}}
+@media(max-width:470px){nav,.nav-children{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <aside><h2>Autoridades SP</h2><small>Cerimonial e relações institucionais</small><nav id="nav"></nav></aside>
 <main>
 <header><div><h1 id="heading">Dashboard</h1><p class="muted" id="subtitle">Situação da base de contatos institucionais.</p></div><div class="header-actions"><span class="pill" id="syncBadge">Conectando ao banco...</span><button class="glass-btn" id="authTopButton" type="button" onclick="openAuth()">Entrar / Criar conta</button></div></header>
-<div class="hint" id="syncNotice">Conectando ao Supabase. Os registros serão exibidos somente quando carregados do banco online. Confira contatos nas fontes oficiais antes do uso institucional.</div>
+
 <div class="visitor-access-banner" id="visitorAccessBanner" hidden aria-label="Informações sobre acesso de visitantes">
   <div class="visitor-access-copy">
-    <div class="visitor-access-title">Você está navegando sem cadastro <span class="visitor-mini-badge">Acesso público</span></div>
+    <div class="visitor-access-title"><span aria-hidden="true">✦</span> Faça parte do Autoridades SP <span class="visitor-mini-badge">Cadastro opcional</span></div>
     <div class="visitor-access-compare">
-      <div class="visitor-access-item"><strong>Sem cadastro</strong>Consulte autoridades e monte mailings usando apenas os dados disponibilizados publicamente.</div>
-      <div class="visitor-access-item"><strong>Com uma conta</strong>Você poderá receber acesso a informações e recursos adicionais, conforme as permissões concedidas pela Administração.</div>
+      <div class="visitor-access-item"><strong>Sem cadastro</strong>Continue consultando os dados públicos gratuitamente, sem criar uma conta.</div>
+      <div class="visitor-access-item"><strong>Com uma conta</strong>Tenha sua área de acesso e solicite permissões de Cerimonial quando necessário, sujeitas à aprovação.</div>
     </div>
   </div>
-  <div class="visitor-access-actions"><button type="button" class="primary" onclick="openAuth('signup')">Criar minha conta</button><small>O cadastro não libera dados restritos automaticamente.</small></div>
+  <div class="visitor-access-actions"><button type="button" class="primary" onclick="openAuth('signup')">Criar conta gratuita</button><small>Sem cadastro obrigatório · acesso especial sujeito à aprovação</small></div>
   <button type="button" class="visitor-access-dismiss" onclick="dismissVisitorBanner()" aria-label="Dispensar aviso de acesso">×</button>
 </div>
+<div class="hint system-notice" id="syncNotice" role="status" aria-live="polite">Conectando ao Supabase. Os registros serão exibidos somente quando carregados do banco online.</div>
 <section id="dashboard" class="on"><div class="cards" id="stats"></div><div class="card"><h3>Cobertura de e-mails por categoria</h3><div id="coverage"></div></div><div class="card"><h3>Consulta à base online</h3><p class="sub">Pesquise por nome, partido, região, cargo ou agrupamentos geográficos. Os resultados são ordenados alfabeticamente.</p><button class="primary" onclick="go('buscar')">Pesquisar autoridades</button></div></section>
 <section id="buscar"><div class="card"><h3>Busca inteligente de autoridades</h3><div class="toolbar"><input id="search" aria-label="Busca inteligente" placeholder="Ex.: Prefeitos da Baixada Santista" oninput="onSearchInput()" autocomplete="off"><select id="category" aria-label="Categoria" onchange="renderTable()"><option value="">Todas as categorias</option></select><button class="secondary" onclick="clearSearch()">Limpar filtros</button></div><div id="suggestionBox" class="suggestion-box" hidden></div><div class="search-help"><button onclick="setSearch('região do Alto Tietê')">Alto Tietê</button><button onclick="setSearch('Grande ABC')">Grande ABC</button><button onclick="setSearch('Baixada Santista')">Baixada Santista</button><button onclick="setSearch('Vereadores de Santos')">Vereadores de Santos</button></div><div class="recent-box"><span class="sub">Pesquisas recentes</span><div id="recentSearches" class="recent-items"></div><button class="tiny-btn" onclick="clearRecentSearches()">Limpar histórico</button></div><p class="small-note" id="searchInterpretation">Digite um nome, partido, município ou uma combinação de filtros.</p><div class="selection-bar"><span class="sub" id="resultCount">Carregando resultados...</span><button class="secondary" onclick="selectVisible()">Selecionar resultados com e-mail</button><button class="secondary" onclick="clearSelection()">Limpar seleção</button><button class="primary" onclick="openGeneratorFromSearch()">Ver lista selecionada (<span id="selectedCount">0</span>)</button></div><div style="overflow:auto"><table><thead><tr><th><input class="table-check" id="selectAllVisible" type="checkbox" aria-label="Selecionar resultados visíveis" onchange="toggleVisible(this.checked)"></th><th>Nome</th><th>Cargo / Partido</th><th>Município / Base eleitoral</th><th>E-mail</th><th>Verificação</th><th>Fonte</th></tr></thead><tbody id="rows"></tbody></table></div></div></section>
 <section id="gerador"><div class="card"><h3>Gerador de listas para Outlook</h3><p class="sub">Selecione autoridades na busca ou use os filtros abaixo. O gerador trabalha somente com registros carregados do Supabase. Confira os e-mails antes do envio.</p><div id="searchContext" class="context-banner" hidden></div><div class="grid2" id="groupChecks"></div><div class="field"><label>Município ou região (opcional)</label><input id="filterCity" placeholder="Ex.: Alto Tietê, Grande ABC, Suzano"></div><label class="check"><input type="checkbox" id="onlyVerified"> Somente e-mails com verificação registrada</label><div class="actions"><button class="primary" onclick="generate()">Gerar lista pelos filtros</button><button class="secondary" onclick="useSelection()">Usar autoridades selecionadas (<span id="selectedCountGenerator">0</span>)</button></div><div style="margin-top:20px"><label>Destinatários (separados por ponto e vírgula)</label><textarea id="generated" rows="7" readonly placeholder="Os endereços aparecerão aqui"></textarea></div><p class="sub" id="genCount"></p><div id="recipientList" style="margin:12px 0"></div><div class="actions"><button class="secondary" onclick="clearGenerated()">Limpar lista</button><button class="secondary" onclick="copyEmails()">Copiar para Outlook</button><button class="secondary" onclick="exportCsv()">Exportar CSV</button></div></div></section>
-<section id="pendencias"><div class="card"><h3>E-mails pendentes de verificação</h3><div id="pending"></div></div></section>
-<section id="atualizacoes"><div class="card"><h3>Histórico de atualização</h3><div id="updateHistory" class="sub">Consultando histórico...</div><p class="sub">A coleta semanal da ALESP foi testada com sucesso no GitHub Actions. A consulta deste histórico depende de permissão pública de leitura no Supabase. A coleta de outros órgãos ainda está em desenvolvimento.</p></div></section>
-<section id="fontes"><div class="card"><h3>Fontes oficiais</h3><p class="sub">A base de deputados estaduais foi importada da <a href="https://www.al.sp.gov.br/deputado/dados/" target="_blank" rel="noopener noreferrer">ALESP</a> em 04/11/2026. O robô registrou 94 deputados, 94 e-mails e 87 bases eleitorais preenchidas nessa execução. Outras fontes previstas: <a href="https://condemat.sp.gov.br/conselho-de-prefeitos/" target="_blank" rel="noopener noreferrer">CONDEMAT</a> e <a href="https://www.saopaulo.sp.leg.br/vereadores/membros/" target="_blank" rel="noopener noreferrer">Câmara Municipal de São Paulo</a>. As classificações políticas usadas na busca são convencionais e revisáveis, não são fornecidas pela ALESP. Base eleitoral não significa representação exclusiva ou residência no município.</p></div></section>
+<section id="pendencias"><div class="card"><div class="admin-panel-heading"><div><h3 style="margin-bottom:5px">Pendências de contatos</h3><p class="sub" style="margin:0">Área exclusiva da Administração. Consulte a fonte antes de corrigir um endereço.</p></div><span class="tag">Gestão interna</span></div><div id="pending"></div></div></section>
+<section id="atualizacoes"><div class="card"><h3>Histórico de atualização</h3><div id="updateHistory" class="sub">Consultando histórico...</div><p class="sub">Este histórico mostra somente as execuções registradas na tabela de atualizações do Supabase. Registros inseridos manualmente não representam execução de coletor.</p></div></section>
+<section id="fontes"><div class="card"><h3>Fontes utilizadas nesta base</h3><p class="sub">Relação gerada a partir dos endereços de origem registrados nas autoridades disponíveis para sua conta. Órgãos ainda não coletados não são listados como fonte. O link da origem não garante, sozinho, que um endereço de e-mail receba mensagens.</p><div id="officialSources" aria-live="polite"><p class="sub">Aguardando carregamento da base...</p></div></div></section>
 <section id="aparencia"><div class="card"><h3>Aparência e acessibilidade</h3><p class="sub">As preferências ficam salvas somente neste navegador. Não alteram a experiência de outras pessoas.</p><div class="field"><label>Cor do sistema</label><div id="themeOptions" class="theme-options"></div></div><div class="grid2"><div class="field"><label for="modeSelect">Modo de exibição</label><select id="modeSelect" onchange="updatePreferences()"><option value="light">Claro</option><option value="dark">Escuro</option></select></div><div class="field"><label for="fontSelect">Tamanho do texto</label><select id="fontSelect" onchange="updatePreferences()"><option value="normal">Normal</option><option value="large">Grande</option><option value="extra">Extra grande</option></select></div></div><label class="check"><input id="compactSelect" type="checkbox" onchange="updatePreferences()"> Visualização compacta</label><button class="secondary" onclick="resetPreferences()">Restaurar aparência padrão</button></div></section><section id="administracao">
 <div class="admin-hero"><div><h3>Central de Administração</h3><p class="sub">Gerencie a visibilidade de informações por perfil, com proteção no Supabase.</p></div><span class="admin-stamp">◈ Acesso administrativo</span></div>
 <div class="admin-feature-grid">
@@ -369,7 +417,7 @@ body[data-mode=dark] .admin-history-reversal{color:#81d7ac}
   <div><h3>Nova Autoridade</h3><p class="sub">Cadastre um contato institucional. Somente administradores podem gravar este formulário.</p></div>
   <span class="tag">Cadastro manual · Versão 3.3</span>
  </div>
- <div class="hint">O cadastro é <strong>real</strong> e fica disponível na consulta conforme as permissões dos perfis. Verifique os dados e a fonte oficial antes de salvar. E-mails novos entram como <strong>pendentes de verificação</strong>. Não cadastre nomes fictícios para testar.</div>
+ <div class="hint">O cadastro é <strong>real</strong> e fica disponível na consulta conforme as permissões dos perfis. Verifique os dados e a fonte oficial antes de salvar. Após salvar, a confirmação humana dependerá da verificação vinculada à fonte; o cadastro, sozinho, não comprova a entrega do e-mail. Não cadastre nomes fictícios para testar.</div>
  <form id="adminAuthorityForm" onsubmit="submitNewAuthority(event)" onreset="resetAuthorityDefaults()">
   <div class="admin-form-grid">
    <div class="field"><label for="newAuthorityName">Nome completo *</label><input id="newAuthorityName" type="text" maxlength="180" autocomplete="off" placeholder="Nome da autoridade" required></div>
@@ -429,7 +477,7 @@ body[data-mode=dark] .admin-history-reversal{color:#81d7ac}
 </div>
 <div class="card"><h3>Exportação administrativa</h3><p class="sub">Baixe somente os dados que sua sessão atual está autorizada a consultar. As correções manuais são mantidas separadamente dos dados coletados.</p><button class="secondary" onclick="backup()">Baixar dados consultados (JSON)</button></div>
 </section>
-<footer>Autoridades SP 3.7 · Consulta institucional de informações públicas e autorizadas · Confira contatos nas fontes oficiais antes do uso.</footer>
+<footer>Autoridades SP 4.1 · Consulta institucional de informações públicas e autorizadas · Fontes e disponibilidade são atualizadas conforme a base online.</footer>
 </main><div class="mobile-list-bar"><button class="primary" onclick="openGeneratorFromSearch()">Ver lista selecionada (<span id="mobileSelectedCount">0</span>)</button></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -495,7 +543,9 @@ body[data-mode=dark] .admin-history-reversal{color:#81d7ac}
 <script>
 'use strict';
 const categories={deputado_estadual:'Deputados estaduais',secretario_estadual:'Secretários estaduais',secretario_municipal:'Secretários municipais',vereador:'Vereadores',prefeito:'Prefeitos',governador:'Governador',vice_governador:'Vice-governador',subprefeito:'Subprefeitos',outro:'Outras autoridades'};
-const menu=[['dashboard','▦ Dashboard'],['buscar','⌕ Buscar autoridades'],['deputado_estadual','♙ Deputados estaduais'],['secretario_estadual','▤ Secretários estaduais'],['secretario_municipal','▤ Secretários municipais'],['vereador','♙ Vereadores'],['prefeito','⌖ Prefeitos'],['gerador','☷ Gerador de listas'],['pendencias','✓ Pendências'],['atualizacoes','↻ Atualizações'],['fontes','▣ Fontes oficiais'],['aparencia','◉ Aparência'],['administracao','⚙ Administração']];
+const menu=[['dashboard','Dashboard'],['buscar','Buscar autoridades'],['gerador','Gerador de listas'],['atualizacoes','Atualizações'],['fontes','Fontes oficiais'],['aparencia','Aparência']];
+const authorityMenuOrder=['deputado_estadual','secretario_estadual','secretario_municipal','vereador','prefeito','governador','vice_governador','subprefeito','outro'];
+const navExpanded={autoridades:false,gestao:false};
 const SUPABASE_URL='https://xigupkwcxfqiofxrvion.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_AuGtLTpkXtkEY1w_fQXSkQ_jV70SzUO';
 const headers={'apikey':SUPABASE_PUBLISHABLE_KEY};
@@ -541,29 +591,147 @@ async function loadData(){
    if(error)throw Error(error.message);
    data=(all||[]).sort(sortName);loaded=true;
   $('syncBadge').textContent='Banco online · '+data.length+' registros';$('syncBadge').style.background='#e5f5eb';$('syncBadge').style.color='#12623d';
-  $('syncNotice').textContent='Consulta conectada ao Supabase. '+data.length+' autoridades disponíveis. A coleta ALESP já foi executada com sucesso; outros órgãos estão em implementação. Contatos devem ser conferidos antes do uso.';
- }catch(e){loaded=false;data=[];$('syncBadge').textContent='Falha na conexão';$('syncBadge').style.background='#fee4e2';$('syncBadge').style.color='#b42318';$('syncNotice').textContent='Falha ao consultar o Supabase ('+e.message+'). Nenhum dado de demonstração será exibido.'}
- refresh();renderTable();loadUpdates();
+  syncErrorMessage='';
+ }catch(e){loaded=false;data=[];syncErrorMessage='Falha ao consultar o Supabase: '+e.message+'. Nenhum dado de demonstração será exibido.';$('syncBadge').textContent='Falha na conexão';$('syncBadge').style.background='#fee4e2';$('syncBadge').style.color='#b42318';}
+ refresh();renderTable();renderOfficialSources();loadUpdates();
 }
 async function loadUpdates(){try{
  const records=await api('atualizacoes?select=tipo,iniciado_em,finalizado_em,status,registros_atualizados,registros_pendentes&order=iniciado_em.desc&limit=30');
  const success=records.find(x=>['concluido','sucesso','concluida'].includes(x.status));
  $('updateHistory').innerHTML='<p><b>Última coleta concluída:</b> '+escapeHtml(fmt(success?.finalizado_em))+'</p>'+(records.length?'<div style="overflow:auto"><table><thead><tr><th>Tipo</th><th>Início</th><th>Fim</th><th>Status</th><th>Processados</th><th>Pendentes</th></tr></thead><tbody>'+records.map(x=>'<tr><td>'+escapeHtml(x.tipo)+'</td><td>'+escapeHtml(fmt(x.iniciado_em))+'</td><td>'+escapeHtml(fmt(x.finalizado_em))+'</td><td>'+escapeHtml(x.status)+'</td><td>'+Number(x.registros_atualizados||0)+'</td><td>'+Number(x.registros_pendentes||0)+'</td></tr>').join('')+'</tbody></table></div>':'<p>Nenhuma execução registrada.</p>');
  }catch(e){$('updateHistory').textContent='Histórico não disponível para leitura pública. A tabela de atualizações pode exigir uma política SELECT no Supabase.'}}
-function go(id){if(id==='administracao'&&currentRole!=='administracao')id='dashboard';current=id;const isCategory=!!categories[id];document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===(isCategory?'buscar':id)));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));$('heading').textContent=isCategory?categories[id]:({dashboard:'Dashboard',buscar:'Buscar autoridades',gerador:'Gerador de listas',pendencias:'Pendências',atualizacoes:'Atualizações',fontes:'Fontes oficiais',administracao:'Administração',aparencia:'Aparência'}[id]||id);$('subtitle').textContent=isCategory?'Contatos institucionais em ordem alfabética.':id==='dashboard'?'Situação da base de contatos institucionais.':'Consulta à base online.';if(isCategory)$('category').value=id;else if(id==='buscar')$('category').value='';refresh();if(isCategory||id==='buscar')renderTable();if(id==='atualizacoes')loadUpdates();if(id==='gerador')updateSelectionCount();if(id==='aparencia')renderThemeOptions();if(id==='administracao'){loadAdminPermissions();renderAdminEditResults();loadAdminUsers();loadAdminCerimonialRequests();}window.scrollTo(0,0)}
+function go(id){
+ if((id==='administracao'||id==='pendencias')&&currentRole!=='administracao')id='dashboard';
+ const isCategory=!!categories[id];
+ if(isCategory)navExpanded.autoridades=true;
+ if(id==='administracao'||id==='pendencias')navExpanded.gestao=true;
+ current=id;
+ document.querySelectorAll('section').forEach(section=>section.classList.toggle('on',section.id===(isCategory?'buscar':id)));
+ $('heading').textContent=isCategory?categories[id]:({dashboard:'Dashboard',buscar:'Buscar autoridades',gerador:'Gerador de listas',pendencias:'Pendências',atualizacoes:'Atualizações',fontes:'Fontes oficiais',administracao:'Administração',aparencia:'Aparência'}[id]||id);
+ $('subtitle').textContent=isCategory?'Contatos institucionais em ordem alfabética.':id==='dashboard'?'Situação da base de contatos institucionais.':'Consulta à base online.';
+ if(isCategory)$('category').value=id;
+ else if(id==='buscar')$('category').value='';
+ renderNavigation();
+ refresh();
+ updateVisitorBanner();
+ if(isCategory||id==='buscar')renderTable();
+ if(id==='atualizacoes')loadUpdates();
+ if(id==='fontes')renderOfficialSources();
+ if(id==='gerador')updateSelectionCount();
+ if(id==='aparencia')renderThemeOptions();
+ if(id==='administracao'){loadAdminPermissions();renderAdminEditResults();loadAdminUsers();loadAdminCerimonialRequests();}
+ window.scrollTo(0,0);
+}
 const navIcons={dashboard:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',deputado_estadual:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/>',buscar:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',secretario_estadual:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 5V3h8v2M3 11h18"/>',secretario_municipal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 5V3h8v2M3 11h18"/>',vereador:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>',prefeito:'<path d="M3 10 12 3l9 7M5 10v11h14V10M9 21v-7h6v7"/>',gerador:'<path d="M8 6h13M8 12h13M8 18h13M3 6h1M3 12h1M3 18h1"/>',pendencias:'<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',atualizacoes:'<path d="M20 7v5h-5M4 17v-5h5"/><path d="M5 9a8 8 0 0 1 14-2l1 5M4 12l1 5a8 8 0 0 0 14-2"/>',fontes:'<path d="m3 10 9-7 9 7M4 10h16M6 10v10M10 10v10M14 10v10M18 10v10M3 21h18"/>',aparencia:'<path d="m14.5 6.5 3 3M3 21l5.5-1.2L20.1 8.2a2.1 2.1 0 0 0-3-3L5.5 16.8 3 21Z"/><path d="m13.5 7.5 3 3"/>',administracao:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/>'};
-function renderNavigation(){$('nav').innerHTML=menu.filter(([id])=>id!=='administracao'||currentRole==='administracao').map(([id,label])=>'<button data-page="'+id+'" onclick="'+(id==='gerador'?'openGeneratorFromSearch()':"go('"+id+"')")+'"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:10px">'+(navIcons[id]||navIcons.dashboard)+'</svg>'+escapeHtml(label.replace(/^[^A-Za-zÀ-ÿ]+/,''))+'</button>').join('');}
+function navIcon(id){return '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+(navIcons[id]||navIcons.dashboard)+'</svg>';}
+function navEntry(id,label,child=false){
+ const action=id==='gerador'?'openGeneratorFromSearch()':"go('"+id+"')";
+ return '<button type="button" class="'+(current===id?'active':'')+'" data-page="'+escapeHtml(id)+'" onclick="'+action+'"'+(current===id?' aria-current="page"':'')+'>'+navIcon(id)+'<span>'+escapeHtml(label)+'</span></button>';
+}
+function navGroup(key,title,icon,items){
+ const expanded=navExpanded[key],active=items.some(([id])=>current===id);
+ return '<div class="nav-group"><button type="button" class="nav-group-toggle '+(active?'is-current':'')+'" aria-expanded="'+expanded+'" aria-controls="nav-'+key+'" data-nav-group="'+escapeHtml(key)+'" onclick="toggleNavGroup(this.dataset.navGroup)">'+navIcon(icon)+'<span>'+escapeHtml(title)+'</span><span class="nav-arrow" aria-hidden="true">⌄</span></button><div id="nav-'+key+'" class="nav-children" '+(expanded?'':'hidden')+'>'+items.map(([id,label])=>navEntry(id,label,true)).join('')+'</div></div>';
+}
+function toggleNavGroup(key){
+ if(!Object.prototype.hasOwnProperty.call(navExpanded,key))return;
+ navExpanded[key]=!navExpanded[key];
+ const children=$('nav-'+key);
+ const toggle=document.querySelector('[data-nav-group="'+key+'"]');
+ if(children)children.hidden=!navExpanded[key];
+ if(toggle)toggle.setAttribute('aria-expanded',String(navExpanded[key]));
+}
+function renderNavigation(){
+ const base=[navEntry('dashboard','Dashboard'),navEntry('buscar','Buscar autoridades'),navGroup('autoridades','Autoridades','vereador',authorityMenuOrder.map(id=>[id,categories[id]])),navEntry('gerador','Gerador de listas'),navEntry('atualizacoes','Atualizações'),navEntry('fontes','Fontes oficiais'),navEntry('aparencia','Aparência')];
+ if(currentRole==='administracao')base.push(navGroup('gestao','Gestão administrativa','administracao',[['administracao','Administração'],['pendencias','Pendências']]));
+ $('nav').innerHTML=base.join('');
+}
 renderNavigation();
 $('category').innerHTML+=Object.entries(categories).map(([k,v])=>'<option value="'+k+'">'+v+'</option>').join('');
 $('groupChecks').innerHTML=Object.entries(categories).map(([k,v])=>'<label class="check"><input type="checkbox" class="group" value="'+k+'"> '+v+'</label>').join('');
 function verified(x){return x.status_verificacao==='verificado'||x.status==='verificado'}
+let syncErrorMessage='';
+function updateSystemNotice(){
+ const el=$('syncNotice');
+ if(!el)return;
+ el.classList.remove('notice-success','notice-error');
+ if(syncErrorMessage){el.classList.add('notice-error');el.textContent=syncErrorMessage;return;}
+ if(!loaded){el.textContent='Conectando à base de autoridades... Os números aparecerão após a consulta online.';return;}
+ const n=data.length;
+ const pending=data.filter(x=>x.status_verificacao==='pendente'||(!x.status_verificacao&&x.status==='pendente')).length;
+ const counted=data.filter(x=>x.email).length;
+ const labels=Object.entries(categories).map(([k,label])=>({label,n:data.filter(x=>x.kind===k).length})).filter(x=>x.n>0);
+ let msg='Base online: '+n+' autoridades e '+counted+' e-mails cadastrados.';
+ if(categories[current])msg=categories[current]+': '+data.filter(x=>x.kind===current).length+' registro(s) disponíveis na base online.';
+ else if(current==='dashboard')msg+=' '+labels.slice(0,3).map(x=>x.n+' '+x.label.toLowerCase()).join(' · ')+'.';
+ else if(current==='buscar')msg+=' Use os filtros para localizar contatos e conferir a fonte de cada registro.';
+ else if(current==='fontes')msg='Estas são as fontes de origem efetivamente registradas nos '+n+' cadastros disponíveis para sua conta.';
+ else if(current==='atualizacoes')msg='O histórico abaixo depende das execuções registradas no banco; a presença de um contato não significa que houve coleta recente.';
+ else if(current==='gerador')msg='Gere listas com os '+counted+' endereços disponíveis, respeitando as permissões do seu perfil e a verificação desejada.';
+ else if(current==='administracao'&&currentRole==='administracao')msg='Sessão administrativa ativa. '+n+' autoridades disponíveis; alterações devem preservar a fonte e o histórico de conferência.';
+ else if(current==='pendencias'&&currentRole==='administracao')msg='Central administrativa: '+pending+' contato(s) aguardando análise. A fonte da informação deve ser conferida antes de qualquer ajuste.';
+ else if(current==='aparencia')msg='As preferências visuais são salvas somente neste navegador.';
+ el.classList.add('notice-success');el.textContent=msg;
+}
+function renderContactStatus(x){
+ const ok=Boolean(x.email)&&verified(x);
+ const state=ok?'Conferido':'A conferir';
+ const desc=ok?'E-mail registrado como conferido na base. Isto não comprova a entrega de mensagens.':'O contato ainda exige conferência ou não foi localizado.';
+ const url=sourceUrlFor(x);
+ const dateInfo=x.ultima_verificacao?'<p>Data informada pela base: '+escapeHtml(fmt(x.ultima_verificacao))+'</p>':'';
+ const info=(url?'<p><a href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">Consultar origem cadastrada</a></p>':'<p>Não há URL de origem cadastrada para este registro.</p>')+dateInfo;
+ return '<span class="tag '+(ok?'tag-verified':'tag-pending')+'">'+(ok?'✓ ':'◷ ')+state+'</span><details class="contact-info" onmouseenter="this.open=true" onmouseleave="this.open=false"><summary aria-label="Informações sobre a conferência de '+escapeHtml(x.name)+'" title="Informações sobre a origem e verificação">i</summary><div class="contact-info-panel"><strong>'+escapeHtml(state)+'</strong><p>'+escapeHtml(desc)+'</p>'+info+'</div></details>';
+}
 function refresh(){
- const verifiedCount=data.filter(x=>x.email&&verified(x)).length,emailed=data.filter(x=>x.email).length,pending=data.filter(x=>x.status_verificacao==='pendente'||(!x.status_verificacao&&x.status==='pendente')).length;
- const stats=[['Autoridades cadastradas',data.length],['Deputados estaduais',data.filter(x=>x.kind==='deputado_estadual').length],['E-mails cadastrados',emailed],['E-mails com verificação registrada',verifiedCount],['E-mails sem verificação registrada',emailed-verifiedCount],['Pendências',pending]];
- $('stats').innerHTML=stats.map(([l,n])=>'<div class="card"><div class="stat">'+n+'</div><div class="sub">'+l+'</div></div>').join('');
- $('coverage').innerHTML=Object.entries(categories).map(([k,v])=>{let arr=data.filter(x=>x.kind===k),yes=arr.filter(x=>x.email&&verified(x)).length;return '<div style="padding:11px 0;border-bottom:1px solid #edf0f4"><b>'+escapeHtml(v)+'</b><div class="sub">'+arr.length+' cadastradas · '+yes+' e-mails com verificação registrada</div><div style="height:7px;background:#eef2f6;border-radius:8px;margin-top:8px"><div style="height:100%;background:#208454;border-radius:8px;width:'+(arr.length?yes/arr.length*100:0)+'%"></div></div></div>'}).join('');
+ const verifiedCount=data.filter(x=>x.email&&verified(x)).length,emailed=data.filter(x=>x.email).length;
  const pend=data.filter(x=>x.status_verificacao==='pendente'||(!x.status_verificacao&&x.status==='pendente'));
- $('pending').innerHTML=pend.length?pend.slice(0,150).map(x=>'<p><b>'+escapeHtml(x.name)+'</b> — '+escapeHtml(x.email||'sem e-mail')+' · '+escapeHtml(x.regiao_atuacao||x.city||'região não informada')+' · '+escapeHtml(x.observacoes_verificacao||'verificação pendente')+'</p>').join(''):'<div class="empty">Nenhuma pendência cadastrada.</div>';
+ const stats=[['Autoridades cadastradas',data.length],['Deputados estaduais',data.filter(x=>x.kind==='deputado_estadual').length],['E-mails cadastrados',emailed],['E-mails com conferência registrada',verifiedCount]];
+ if(currentRole==='administracao')stats.push(['E-mails sem conferência registrada',emailed-verifiedCount],['Pendências para análise',pend.length]);
+ $('stats').innerHTML=stats.map(([l,n])=>'<div class="card"><div class="stat">'+n+'</div><div class="sub">'+escapeHtml(l)+'</div></div>').join('');
+ $('coverage').innerHTML=Object.entries(categories).map(([k,v])=>{let arr=data.filter(x=>x.kind===k),yes=arr.filter(x=>x.email&&verified(x)).length;return '<div style="padding:11px 0;border-bottom:1px solid var(--line)"><b>'+escapeHtml(v)+'</b><div class="sub">'+arr.length+' cadastradas · '+yes+' e-mails com conferência registrada</div><div style="height:7px;background:var(--line);border-radius:8px;margin-top:8px"><div style="height:100%;background:#208454;border-radius:8px;width:'+(arr.length?yes/arr.length*100:0)+'%"></div></div></div>'}).join('');
+ if(currentRole==='administracao'){
+  $('pending').innerHTML=pend.length?pend.slice(0,150).map(x=>'<div class="pending-item"><div><strong>'+escapeHtml(x.name)+'</strong><p class="sub">'+escapeHtml(x.email||'Sem e-mail cadastrado')+' · '+escapeHtml(x.city||'Município não informado')+'</p><p class="sub">'+escapeHtml(x.observacoes_verificacao||'Contato aguardando conferência')+'</p></div><button class="secondary" type="button" data-id="'+escapeHtml(x.id)+'" onclick="openPendingForEdit(this.dataset.id)">Corrigir no cadastro</button></div>').join(''):'<div class="empty">Nenhuma pendência de contato.</div>';
+ }else $('pending').textContent='Área disponível somente para a Administração.';
+ updateSystemNotice();
+}
+function openPendingForEdit(id){
+ if(currentRole!=='administracao'||!currentUser)return;
+ go('administracao');
+ selectAuthorityForEdit(id);
+}
+function sourceUrlFor(x){
+ for(const raw of [x?.fonte_oficial,x?.source]){
+  if(typeof raw!=='string')continue;
+  try{const url=new URL(raw.trim());if(['https:','http:'].includes(url.protocol)&&url.hostname&&url.username===''&&url.password==='')return url.href;}catch{}
+ }
+ return '';
+}
+function sourceTitle(host){
+ if(host==='al.sp.gov.br'||host.endsWith('.al.sp.gov.br'))return 'Assembleia Legislativa do Estado de São Paulo (ALESP)';
+ if(host==='saopaulo.sp.leg.br'||host.endsWith('.saopaulo.sp.leg.br'))return 'Câmara Municipal de São Paulo';
+ if(host==='prefeitura.sp.gov.br'||host.endsWith('.prefeitura.sp.gov.br'))return 'Prefeitura de São Paulo';
+ return host;
+}
+function renderOfficialSources(){
+ const box=$('officialSources');if(!box)return;
+ if(!loaded){box.innerHTML='<p class="sub">Aguardando a consulta online...</p>';return;}
+ const groups=new Map();let withoutUrl=0;
+ for(const item of data){
+  const url=sourceUrlFor(item);if(!url){withoutUrl++;continue;}
+  const parsed=new URL(url),key=parsed.hostname.toLowerCase().replace(/^www\./,'');
+  if(!groups.has(key))groups.set(key,{host:key,ids:new Set(),links:new Map()});
+  const group=groups.get(key);group.ids.add(item.id);
+  const previous=group.links.get(url)||0;group.links.set(url,previous+1);
+ }
+ const sorted=[...groups.values()].sort((a,b)=>b.ids.size-a.ids.size||a.host.localeCompare(b.host,'pt-BR'));
+ let html='<p class="source-stat"><b>'+sorted.length+'</b> origem(ns) com link · <b>'+withoutUrl+'</b> registro(s) sem link de origem. A contagem considera os dados que sua conta pode consultar.</p>';
+ for(const group of sorted){
+  const links=[...group.links.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'pt-BR'));
+  html+='<article class="source-group"><div class="source-group-head"><h4>'+escapeHtml(sourceTitle(group.host))+'</h4><span class="tag">'+group.ids.size+' registro(s)</span></div><p class="sub">Domínio registrado: '+escapeHtml(group.host)+' · '+links.length+' URL(s) de origem associadas a cadastros.</p>';
+  html+='<details'+(links.length===1?' open':'')+'><summary>'+(links.length===1?'Link registrado':'Consultar '+links.length+' links registrados')+'</summary><ul class="source-link-list">'+links.map(([url,count])=>'<li><a href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(url)+'</a> <span class="sub">('+count+' registro(s))</span></li>').join('')+'</ul></details></article>';
+ }
+ if(!sorted.length)html+='<div class="empty">Nenhuma URL de fonte foi registrada nos contatos disponíveis.</div>';
+ if(withoutUrl)html+='<p class="small-note">Registros sem URL são informados separadamente e não aparecem como fonte oficial confirmada. Se for necessário, a Administração pode completar a referência no cadastro.</p>';
+ box.innerHTML=html;
 }
 function extractQuery(raw){
  let text=norm(raw),region=null,ideology=null,party=null,kind=null;
@@ -588,7 +756,7 @@ function explainQuery(parsed){const parts=[];if(parsed.kind)parts.push(categorie
 function renderTable(){
  const q=$('search').value,c=$('category').value,base=data.filter(x=>!c||x.kind===c),filtered=filterSmart(base,q);visibleItems=filtered.result.sort(sortName);
  $('searchInterpretation').textContent=explainQuery(filtered.parsed);$('resultCount').textContent=visibleItems.length+' resultado(s), em ordem alfabética';
- $('rows').innerHTML=visibleItems.length?visibleItems.map(x=>'<tr><td><input class="table-check" type="checkbox" '+(selectedIds.has(x.id)?'checked ':'')+(x.email?'':'disabled ')+'aria-label="Selecionar '+escapeHtml(x.name)+'" data-id="'+escapeHtml(x.id)+'" onchange="toggleOne(this.dataset.id,this.checked)"></td><td><b>'+escapeHtml(x.name)+'</b></td><td>'+escapeHtml(x.role||'—')+'<div class="badge-region">'+escapeHtml(x.partido||'Partido não informado')+'</div></td><td>'+escapeHtml(x.city||'—')+(x.regiao_atuacao?'<div class="badge-region">Base eleitoral: '+escapeHtml(x.regiao_atuacao)+'</div>':'')+'</td><td>'+escapeHtml(x.email||'—')+'</td><td><span class="tag">'+escapeHtml(x.status_verificacao||x.status||'pendente')+'</span></td><td>'+(x.fonte_oficial||x.source?'<a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(safeUrl(x.fonte_oficial||x.source))+'">Fonte</a>':'—')+'</td></tr>').join(''):'<tr><td colspan="7" class="empty">'+(loaded?'Nenhuma autoridade encontrada com esses filtros.':'Aguardando conexão com o banco.')+'</td></tr>';
+ $('rows').innerHTML=visibleItems.length?visibleItems.map(x=>'<tr><td><input class="table-check" type="checkbox" '+(selectedIds.has(x.id)?'checked ':'')+(x.email?'':'disabled ')+'aria-label="Selecionar '+escapeHtml(x.name)+'" data-id="'+escapeHtml(x.id)+'" onchange="toggleOne(this.dataset.id,this.checked)"></td><td><b>'+escapeHtml(x.name)+'</b></td><td>'+escapeHtml(x.role||'—')+'<div class="badge-region">'+escapeHtml(x.partido||'Partido não informado')+'</div></td><td>'+escapeHtml(x.city||'—')+(x.regiao_atuacao?'<div class="badge-region">Base eleitoral: '+escapeHtml(x.regiao_atuacao)+'</div>':'')+'</td><td>'+escapeHtml(x.email||'—')+'</td><td>'+renderContactStatus(x)+'</td><td>'+(sourceUrlFor(x)?'<a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(sourceUrlFor(x))+'">Fonte</a>':'—')+'</td></tr>').join(''):'<tr><td colspan="7" class="empty">'+(loaded?'Nenhuma autoridade encontrada com esses filtros.':'Aguardando conexão com o banco.')+'</td></tr>';
  const selectable=visibleItems.filter(x=>x.email);$('selectAllVisible').checked=selectable.length>0&&selectable.every(x=>selectedIds.has(x.id));$('selectAllVisible').indeterminate=selectable.some(x=>selectedIds.has(x.id))&&!$('selectAllVisible').checked;updateSelectionCount();
 }
 function setSearch(q){$('search').value=q;go('buscar');renderTable();saveRecent(q);renderRecentSearches();renderSuggestions()}
@@ -1594,7 +1762,7 @@ const transientSessionFlags={};
 const sessionRead=key=>{try{return sessionStorage.getItem(key)??transientSessionFlags[key]??null}catch{return transientSessionFlags[key]??null}};
 const sessionWrite=(key,value)=>{transientSessionFlags[key]=value;try{sessionStorage.setItem(key,value)}catch{}};
 function updateVisitorBanner(){
- const visible=!currentUser&&$('authOverlay').hidden&&sessionRead(welcomeSessionKey)==='shown'&&sessionRead(visitorBannerSessionKey)!=='yes';
+ const visible=!currentUser&&current==='dashboard'&&$('authOverlay').hidden&&sessionRead(welcomeSessionKey)==='shown'&&sessionRead(visitorBannerSessionKey)!=='yes';
  $('visitorAccessBanner').hidden=!visible;
 }
 function dismissVisitorBanner(){sessionWrite(visitorBannerSessionKey,'yes');updateVisitorBanner()}
@@ -1689,24 +1857,26 @@ async function syncAuthAndData(){
     else role='usuario'; // ausência de perfil não concede privilégios
   }
   if(ticket!==syncCounter)return;
-  if((currentUser?.id||null)!==(user?.id||null))resetMyRequestState();
+  const changedAccount=(currentUser?.id||null)!==(user?.id||null);
+  if(changedAccount)resetMyRequestState();
+  if(changedAccount||currentRole!==role){data=[];loaded=false;selectedIds.clear();recipients=[];syncErrorMessage='';}
   currentUser=user;currentRole=role;if(role!=='administracao'){adminRows=null;adminWorking.clear();adminOriginal.clear();cancelEditAuthority();resetAdminUsersState();resetAdminCerimonialState();}
   $('authTopButton').textContent=user?'Minha conta · '+(role==='administracao'?'ADM':role==='cerimonial'?'Cerimonial':'Usuário'):'Entrar / Criar conta';
   renderNavigation();
-  if(current==='administracao'&&role!=='administracao')go('dashboard');
+  if(['administracao','pendencias'].includes(current)&&role!=='administracao')go('dashboard');
   else go(current);
   if(!$('authOverlay').hidden&&authMode==='account')setAuthMode('account');
   maybeShowSignupWelcome();
   updateVisitorBanner();
   await loadData();
  }catch(err){
-  $('syncNotice').textContent='Falha ao verificar a sessão: '+friendlyAuthError(err);
+  syncErrorMessage='Falha ao verificar a sessão: '+friendlyAuthError(err);updateSystemNotice();
   maybeShowSignupWelcome();
   if(!loaded)await loadData();
  }
 }
 function initV3(){
- if(!sb){$('syncBadge').textContent='Biblioteca de login indisponível';$('syncNotice').textContent='Conecte-se à internet para testar o login e as consultas seguras.';maybeShowSignupWelcome();return}
+ if(!sb){$('syncBadge').textContent='Biblioteca de login indisponível';syncErrorMessage='Conecte-se à internet para acessar o login e a consulta segura.';updateSystemNotice();maybeShowSignupWelcome();return}
  sb.auth.onAuthStateChange((event,session)=>{
   if(event==='PASSWORD_RECOVERY'){
     recoveryActive=true;

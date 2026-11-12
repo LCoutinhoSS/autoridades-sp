@@ -1,0 +1,33 @@
+
+name: Previa - Vereadores de Sao Paulo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  coletar-previa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Coletar previa oficial
+        run: python coletor_vereadores_sp.py --saida previa-vereadores-sp
+
+      - name: Disponibilizar arquivos para revisao
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: previa-vereadores-sao-paulo
+          path: previa-vereadores-sp/
+          if-no-files-found: warn
+          retention-days: 7

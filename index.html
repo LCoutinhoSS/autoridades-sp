@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Autoridades SP 4.2.1 — Procedência de Contatos</title>
+<title>Autoridades SP 4.3 — Procedência de Contatos</title>
 <style>
 :root{font-family:Inter,Arial,sans-serif;color:#1d2939;background:#f4f6fa}*{box-sizing:border-box}body{margin:0}aside{width:252px;background:#10243d;color:#cbd6e4;position:fixed;inset:0 auto 0 0;padding:25px 14px;overflow:auto}aside h2{color:white;margin:0 10px 4px;font-size:21px}aside small{display:block;margin:0 10px 28px;color:#9bb0c8}nav button{display:block;width:100%;background:none;border:0;color:inherit;text-align:left;padding:12px 14px;border-left:3px solid transparent;border-radius:5px;cursor:pointer;font-size:14px;margin:2px 0}nav button:hover,nav button.active{background:#ffffff19;color:white}nav button.active{border-left-color:#d4aa54}main{margin-left:252px;padding:34px;max-width:1600px}header{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}h1{font-size:27px;color:#10243d;margin:0 0 7px}p.muted{color:#667085;margin:0 0 25px}.pill{font-size:12px;border-radius:30px;padding:7px 11px;background:#fff1d6;color:#815500;font-weight:600}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:white;border:1px solid #e2e7ee;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 2px 6px #15263b06}.stat{font-size:29px;color:#10243d;font-weight:750;margin-bottom:6px}.sub{font-size:13px;color:#64748b;line-height:1.55}h3{margin:4px 0 17px;color:#10243d}button.primary{background:#153a62;color:white;border:0;border-radius:6px;padding:11px 16px;cursor:pointer}button.secondary{background:white;color:#153a62;border:1px solid #cbd5e1;border-radius:6px;padding:10px 14px;cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input,select,textarea{padding:11px;border:1px solid #ccd5e0;border-radius:6px;width:100%;font:inherit;background:white}label{display:block;font-size:13px;color:#475467;margin:0 0 6px;font-weight:600}.field{margin-bottom:15px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px}.toolbar input{flex:1;min-width:240px}.toolbar select{max-width:230px}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:#667085;background:#f8fafc;font-size:12px}td,th{padding:13px 11px;border-bottom:1px solid #edf0f4;vertical-align:top}td button{background:none;border:0;color:#145b96;cursor:pointer}.tag{padding:4px 8px;border-radius:20px;background:#f1f5f9;font-size:11px;display:inline-block}section{display:none}section.on{display:block}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.empty{padding:35px 20px;text-align:center;color:#667085}.hint{background:#fff8e8;border:1px solid #f4e3bd;padding:14px;border-radius:8px;font-size:13px;color:#805b1d;margin-bottom:20px;line-height:1.5}.check{display:flex;gap:8px;align-items:center;margin:12px 0;font-size:14px}.check input{width:auto}.search-help{display:flex;gap:8px;flex-wrap:wrap;margin:-5px 0 16px}.search-help button{border:1px solid #d6dfe9;background:#f8fafc;color:#36516d;border-radius:20px;padding:7px 10px;font-size:12px;cursor:pointer}.search-help button:hover{background:#e8eff7}.table-check{width:17px;height:17px;cursor:pointer}.selection-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0 17px}.selection-bar .sub{margin-right:auto}.small-note{font-size:12px;color:#667085;margin:8px 0 14px}.badge-region{color:#385674;font-size:12px;margin-top:5px}.actions{display:flex;gap:8px;flex-wrap:wrap}footer{margin-top:35px;color:#8995a6;font-size:12px}@media(max-width:850px){aside{position:static;width:100%;padding:15px}aside small{margin-bottom:10px}nav{display:flex;overflow:auto}nav button{min-width:150px}main{margin:0;padding:20px}.cards,.grid2{grid-template-columns:1fr}.card{overflow-x:auto}}
 
@@ -601,6 +601,41 @@ aside :focus-visible{outline-color:var(--gold-400);box-shadow:0 0 0 3px rgba(214
 .contact-info-panel .verify-note{font-size:11px;line-height:1.5;color:var(--muted);margin:8px 0 0}
 .contact-info-panel .verify-source-link{display:inline-block;margin-top:2px;font-size:12px;font-weight:650;overflow-wrap:anywhere}
 @media (max-width:580px){.contact-info .contact-info-panel{max-width:calc(100vw - 40px)}}
+
+/* Autoridades SP 4.3 — Central de Pendências operável (ADM) */
+.pending-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0}
+.pending-tools input{flex:1 1 260px;min-width:0}.pending-tools select{flex:0 1 210px;min-width:145px}
+.pending-summary{font-size:12px;color:var(--muted);margin:0 0 10px}
+.pending-card{border:1px solid var(--line);background:var(--glass-strong);border-radius:var(--r-md);padding:16px 18px;margin:10px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;transition:border-color .2s,box-shadow .2s}
+.pending-card:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));box-shadow:var(--sh1)}
+.pending-card strong{display:block;font-size:14px;color:var(--ink);line-height:1.3}
+.pending-card .sub{margin:4px 0 0;overflow-wrap:anywhere}
+.pending-card .pending-card-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.pending-card .pending-card-actions button{min-height:38px}
+.pending-card .pending-researched{font-size:12px;color:var(--warn);background:var(--warn-bg);display:inline-flex;gap:7px;margin-top:9px;padding:6px 10px;border-radius:10px;line-height:1.4;max-width:100%;overflow-wrap:anywhere}
+.pending-editor[hidden],.pending-note-panel[hidden]{display:none!important}
+.pending-editor{border:1px solid color-mix(in srgb,var(--accent) 50%,var(--line));box-shadow:var(--sh2);background:var(--glass-strong);border-radius:var(--r-lg);padding:20px;margin:15px 0 20px;scroll-margin-top:22px}
+.pending-editor-head{display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.pending-editor h4{margin:0 0 4px;font-size:16px;color:var(--ink)}
+.pending-editor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.pending-editor-grid .field{min-width:0;margin:0}
+.pending-editor-grid label{font-size:12px}
+.pending-editor-grid input{width:100%}
+.pending-editor-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px}
+.pending-editor-foot button{white-space:normal}
+.pending-editor-foot .sub{max-width:60ch;margin:0}
+.pending-note-panel{margin-top:16px;padding:16px;border-radius:var(--r-md);background:color-mix(in srgb,var(--surface) 90%,var(--warn-bg));border:1px solid var(--line)}
+.pending-note-panel textarea{min-height:94px;resize:vertical}
+.pending-note-panel .field{margin-top:10px}
+.pending-inline-status{font-size:12px;line-height:1.6;margin:8px 0 0;color:var(--muted)}
+.pending-inline-status.good{color:var(--ok)}.pending-inline-status.bad{color:var(--err)}
+.pending-notice{border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:12px;line-height:1.55;background:color-mix(in srgb,var(--surface) 80%,var(--info-bg));color:var(--ink);margin:0 0 12px}
+.pending-notice[hidden]{display:none!important}
+.pending-notice.good{border-color:color-mix(in srgb,var(--ok) 38%,var(--line));background:var(--ok-bg);color:var(--ok)}
+.pending-notice.bad{border-color:color-mix(in srgb,var(--err) 38%,var(--line));background:var(--err-bg);color:var(--err)}
+@media(max-width:850px){.pending-card{grid-template-columns:1fr}.pending-card .pending-card-actions{justify-content:flex-start}.pending-tools select{flex:1 1 150px}.pending-editor-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.pending-editor{padding:15px}.pending-card{padding:13px}.pending-card .pending-card-actions{display:grid;grid-template-columns:1fr 1fr}.pending-card .pending-card-actions button{padding:8px 9px;font-size:12px}.pending-editor-foot button{width:100%}}
+
 </style>
 </head>
 <body>
@@ -623,7 +658,29 @@ aside :focus-visible{outline-color:var(--gold-400);box-shadow:0 0 0 3px rgba(214
 <section id="dashboard" class="on"><div class="cards" id="stats"></div><div class="card"><h3>Cobertura de e-mails por categoria</h3><div id="coverage"></div></div><div class="card"><h3>Consulta à base online</h3><p class="sub">Pesquise por nome, partido, região, cargo ou agrupamentos geográficos. Os resultados são ordenados alfabeticamente.</p><button class="primary" onclick="go('buscar')">Pesquisar autoridades</button></div></section>
 <section id="buscar"><div class="card"><h3>Busca inteligente de autoridades</h3><div class="toolbar"><input id="search" aria-label="Busca inteligente" placeholder="Ex.: Prefeitos da Baixada Santista" oninput="onSearchInput()" autocomplete="off"><select id="category" aria-label="Categoria" onchange="renderTable()"><option value="">Todas as categorias</option></select><button class="secondary" onclick="clearSearch()">Limpar filtros</button></div><div id="suggestionBox" class="suggestion-box" hidden></div><div class="search-help"><button onclick="setSearch('região do Alto Tietê')">Alto Tietê</button><button onclick="setSearch('Grande ABC')">Grande ABC</button><button onclick="setSearch('Baixada Santista')">Baixada Santista</button><button onclick="setSearch('Vereadores de Santos')">Vereadores de Santos</button></div><div class="recent-box"><span class="sub">Pesquisas recentes</span><div id="recentSearches" class="recent-items"></div><button class="tiny-btn" onclick="clearRecentSearches()">Limpar histórico</button></div><p class="small-note" id="searchInterpretation">Digite um nome, partido, município ou uma combinação de filtros.</p><div class="selection-bar"><span class="sub" id="resultCount">Carregando resultados...</span><button class="secondary" onclick="selectVisible()">Selecionar resultados com e-mail</button><button class="secondary" onclick="clearSelection()">Limpar seleção</button><button class="primary" onclick="openGeneratorFromSearch()">Ver lista selecionada (<span id="selectedCount">0</span>)</button></div><div style="overflow:auto"><table><thead><tr><th><input class="table-check" id="selectAllVisible" type="checkbox" aria-label="Selecionar resultados visíveis" onchange="toggleVisible(this.checked)"></th><th>Nome</th><th>Cargo / Partido</th><th>Município / Base eleitoral</th><th>E-mail</th><th>Verificação</th><th>Fonte</th></tr></thead><tbody id="rows"></tbody></table></div></div></section>
 <section id="gerador"><div class="card"><h3>Gerador de listas para Outlook</h3><p class="sub">Selecione autoridades na busca ou use os filtros abaixo. O gerador trabalha somente com registros carregados do Supabase. Confira os e-mails antes do envio.</p><div id="searchContext" class="context-banner" hidden></div><div class="grid2" id="groupChecks"></div><div class="field"><label>Município ou região (opcional)</label><input id="filterCity" placeholder="Ex.: Alto Tietê, Grande ABC, Suzano"></div><label class="check"><input type="checkbox" id="onlyVerified"> Somente e-mails com verificação registrada</label><div class="actions"><button class="primary" onclick="generate()">Gerar lista pelos filtros</button><button class="secondary" onclick="useSelection()">Usar autoridades selecionadas (<span id="selectedCountGenerator">0</span>)</button></div><div style="margin-top:20px"><label>Destinatários (separados por ponto e vírgula)</label><textarea id="generated" rows="7" readonly placeholder="Os endereços aparecerão aqui"></textarea></div><p class="sub" id="genCount"></p><div id="recipientList" style="margin:12px 0"></div><div class="actions"><button class="secondary" onclick="clearGenerated()">Limpar lista</button><button class="secondary" onclick="copyEmails()">Copiar para Outlook</button><button class="secondary" onclick="exportCsv()">Exportar CSV</button></div></div></section>
-<section id="pendencias"><div class="card"><div class="admin-panel-heading"><div><h3 style="margin-bottom:5px">Pendências de contatos</h3><p class="sub" style="margin:0">Área exclusiva da Administração. Consulte a fonte antes de corrigir um endereço.</p></div><span class="tag">Gestão interna</span></div><div id="pending"></div></div></section>
+<section id="pendencias"><div class="card"><div class="admin-panel-heading"><div><h3 style="margin-bottom:5px">Central de Pendências</h3><p class="sub" style="margin:0">Confirme, corrija ou registre uma busca sem e-mail, sem sair desta página. Acesso exclusivo da Administração.</p></div><span class="tag">Gestão interna</span></div>
+<div class="pending-notice" id="pendingGlobalStatus" role="status" aria-live="polite" hidden></div>
+<div class="pending-tools"><input type="search" id="pendingSearch" placeholder="Buscar nome, município ou e-mail" aria-label="Buscar pendências" oninput="renderPendingCenter()"><select id="pendingFilter" aria-label="Filtrar pendências" onchange="renderPendingCenter()"><option value="">Todas as pendências</option><option value="sem_email">Sem e-mail</option><option value="com_email">E-mail a conferir</option><option value="busca_registrada">Busca sem e-mail já registrada</option></select></div>
+<p class="pending-summary" id="pendingSummary">Aguardando consulta...</p>
+<div class="pending-editor" id="pendingEditor" hidden>
+ <div class="pending-editor-head"><div><h4 id="pendingEditorTitle">Resolver pendência</h4><p class="sub" id="pendingEditorMeta">Informe a fonte consultada.</p></div><button type="button" class="secondary" onclick="closePendingEditor()" aria-label="Fechar editor de pendência">Fechar ×</button></div>
+ <form id="pendingResolveForm" onsubmit="submitPendingResolution(event)">
+  <div class="pending-editor-grid">
+    <div class="field"><label for="pendingEmailInput">E-mail conferido *</label><input id="pendingEmailInput" type="email" maxlength="254" required autocomplete="off" placeholder="contato@orgao.sp.gov.br"></div>
+    <div class="field"><label for="pendingSourceInput">URL HTTPS da fonte consultada *</label><input id="pendingSourceInput" type="url" maxlength="2000" pattern="https://.*" required autocomplete="off" placeholder="https://www.orgao.sp.gov.br/contato"></div>
+  </div>
+  <div class="pending-editor-foot"><p class="sub">Salvar e confirmar usam os controles de acesso e a auditoria já existentes no Supabase. Conferência na fonte não equivale a teste de entrega.</p><button id="pendingResolveButton" class="primary" type="submit">Salvar e confirmar</button></div>
+ </form>
+ <div class="pending-note-panel" id="pendingNoEmailPanel" hidden>
+  <h4>Registrar busca sem e-mail localizado</h4><p class="sub">Registra a tentativa e mantém a autoridade na lista de pendências. Não cria nem valida um endereço.</p>
+  <form id="pendingNoEmailForm" onsubmit="submitPendingNoEmail(event)">
+   <div class="field"><label for="pendingNoEmailSource">Página oficial consultada *</label><input id="pendingNoEmailSource" type="url" maxlength="2000" pattern="https://.*" required placeholder="https://www.orgao.sp.gov.br/"></div>
+   <div class="field"><label for="pendingNoEmailNote">Onde procurou e o que encontrou? *</label><textarea id="pendingNoEmailNote" required minlength="10" maxlength="1000" placeholder="Ex.: consultei a página do gabinete e a lista de contatos; não há endereço institucional divulgado."></textarea></div>
+   <div class="pending-editor-foot"><p class="sub">Registro restrito à Administração, com data e responsável.</p><button id="pendingNoEmailButton" class="secondary" type="submit">Registrar busca sem e-mail</button></div>
+  </form>
+ </div>
+ <p class="pending-inline-status" id="pendingInlineStatus" role="status" aria-live="polite"></p>
+</div><div id="pending"></div></div></section>
 <section id="atualizacoes"><div class="card"><h3>Histórico de atualização</h3><div id="updateHistory" class="sub">Consultando histórico...</div><p class="sub">Este histórico mostra somente as execuções registradas na tabela de atualizações do Supabase. Registros inseridos manualmente não representam execução de coletor.</p></div></section>
 <section id="fontes"><div class="card"><h3>Fontes utilizadas nesta base</h3><p class="sub">Relação gerada a partir dos endereços de origem registrados nas autoridades disponíveis para sua conta. Órgãos ainda não coletados não são listados como fonte. O link da origem não garante, sozinho, que um endereço de e-mail receba mensagens.</p><div id="officialSources" aria-live="polite"><p class="sub">Aguardando carregamento da base...</p></div></div></section>
 <section id="aparencia"><div class="card"><h3>Aparência e acessibilidade</h3><p class="sub">As preferências ficam salvas somente neste navegador. Não alteram a experiência de outras pessoas.</p><div class="field"><label>Cor do sistema</label><div id="themeOptions" class="theme-options"></div></div><div class="grid2"><div class="field"><label for="modeSelect">Modo de exibição</label><select id="modeSelect" onchange="updatePreferences()"><option value="light">Claro</option><option value="dark">Escuro</option></select></div><div class="field"><label for="fontSelect">Tamanho do texto</label><select id="fontSelect" onchange="updatePreferences()"><option value="normal">Normal</option><option value="large">Grande</option><option value="extra">Extra grande</option></select></div></div><label class="check"><input id="compactSelect" type="checkbox" onchange="updatePreferences()"> Visualização compacta</label><button class="secondary" onclick="resetPreferences()">Restaurar aparência padrão</button></div></section><section id="administracao">
@@ -751,7 +808,7 @@ aside :focus-visible{outline-color:var(--gold-400);box-shadow:0 0 0 3px rgba(214
 </div>
 <div class="card"><h3>Exportação administrativa</h3><p class="sub">Baixe somente os dados que sua sessão atual está autorizada a consultar. As correções manuais são mantidas separadamente dos dados coletados.</p><button class="secondary" onclick="backup()">Baixar dados consultados (JSON)</button></div>
 </section>
-<footer>Autoridades SP 4.2 · Consulta institucional de informações públicas e autorizadas · Fontes e disponibilidade são atualizadas conforme a base online.</footer>
+<footer>Autoridades SP 4.3 · Consulta institucional de informações públicas e autorizadas · Fontes e disponibilidade são atualizadas conforme a base online.</footer>
 </main><div class="mobile-list-bar"><button class="primary" onclick="openGeneratorFromSearch()">Ver lista selecionada (<span id="mobileSelectedCount">0</span>)</button></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -917,6 +974,7 @@ function go(id){
  if(id==='atualizacoes')loadUpdates();
  if(id==='fontes')renderOfficialSources();
  if(id==='gerador')updateSelectionCount();
+ if(id==='pendencias'&&currentRole==='administracao')void loadPendingReviews();
  if(id==='aparencia')renderThemeOptions();
  if(id==='administracao'){loadAdminPermissions();renderAdminEditResults();loadAdminUsers();loadAdminCerimonialRequests();}
  window.scrollTo(0,0);
@@ -1003,8 +1061,13 @@ function refresh(){
  $('stats').innerHTML=stats.map(([l,n])=>'<div class="card"><div class="stat">'+n+'</div><div class="sub">'+escapeHtml(l)+'</div></div>').join('');
  $('coverage').innerHTML=Object.entries(categories).map(([k,v])=>{let arr=data.filter(x=>x.kind===k),yes=arr.filter(x=>x.email&&verified(x)).length;return '<div style="padding:11px 0;border-bottom:1px solid var(--line)"><b>'+escapeHtml(v)+'</b><div class="sub">'+arr.length+' cadastradas · '+yes+' e-mails com conferência registrada</div><div style="height:7px;background:var(--line);border-radius:8px;margin-top:8px"><div style="height:100%;background:#208454;border-radius:8px;width:'+(arr.length?yes/arr.length*100:0)+'%"></div></div></div>'}).join('');
  if(currentRole==='administracao'){
-  $('pending').innerHTML=pend.length?pend.slice(0,150).map(x=>'<div class="pending-item"><div><strong>'+escapeHtml(x.name)+'</strong><p class="sub">'+escapeHtml(x.email||'Sem e-mail cadastrado')+' · '+escapeHtml(x.city||'Município não informado')+'</p><p class="sub">'+escapeHtml(x.observacoes_verificacao||'Contato aguardando conferência')+'</p></div><button class="secondary" type="button" data-id="'+escapeHtml(x.id)+'" onclick="openPendingForEdit(this.dataset.id)">Corrigir no cadastro</button></div>').join(''):'<div class="empty">Nenhuma pendência de contato.</div>';
- }else $('pending').textContent='Área disponível somente para a Administração.';
+  renderPendingCenter();
+ }else {
+  $('pending').textContent='Área disponível somente para a Administração.';
+  if($('pendingEditor'))$('pendingEditor').hidden=true;
+  pendingSelectionId=null;
+  pendingReviewMetadata.clear();
+ }
  updateSystemNotice();
 }
 function openPendingForEdit(id){
@@ -2211,6 +2274,182 @@ function initV3(){
   }
  });
  syncAuthAndData();
+}
+
+
+/* Autoridades SP 4.3 — fluxo administrativo de pendências.
+   Todas as escritas passam por RPCs com conferência de perfil no banco. */
+let pendingSelectionId=null,pendingSelectionSnapshot=null,pendingSelectionTicket=0,pendingWriteBusy=false;
+let pendingReviewMetadata=new Map(),pendingReviewTicket=0,pendingReviewRpcAvailable=true;
+function pendingRecords(){return data.filter(x=>x.status_verificacao==='pendente'||(!x.status_verificacao&&x.status==='pendente'));}
+function setPendingGlobal(message,kind=''){
+ const el=$('pendingGlobalStatus');if(!el)return;
+ el.textContent=message||'';el.className='pending-notice'+(kind?' '+kind:'');el.hidden=!message;
+}
+function pendingInline(message,kind=''){
+ const el=$('pendingInlineStatus');if(!el)return;
+ el.textContent=message||'';el.className='pending-inline-status'+(kind?' '+kind:'');
+}
+function renderPendingCenter(){
+ const box=$('pending');if(!box)return;
+ if(currentRole!=='administracao'||!currentUser){box.textContent='Área restrita à Administração.';return;}
+ const all=pendingRecords();
+ const term=norm($('pendingSearch')?.value||'');const filter=$('pendingFilter')?.value||'';
+ const items=all.filter(x=>{
+  const note=pendingReviewMetadata.get(x.id);
+  if(filter==='sem_email'&&x.email)return false;
+  if(filter==='com_email'&&!x.email)return false;
+  if(filter==='busca_registrada'&&(!note||x.email))return false;
+  return !term||norm([x.name,x.city,x.email,x.role,x.partido].join(' ')).includes(term);
+ });
+ if($('pendingSummary'))$('pendingSummary').textContent=items.length+' de '+all.length+' pendência(s) · '+all.filter(x=>!x.email).length+' sem e-mail · '+all.filter(x=>!!x.email).length+' com e-mail a conferir';
+ box.innerHTML=items.length?items.map(x=>{
+  const note=!x.email?pendingReviewMetadata.get(x.id):null;
+  const last=note?'<div class="pending-researched" title="Última busca registrada">⌕ Busca registrada em '+escapeHtml(fmt(note.pesquisado_em))+' · '+escapeHtml(note.responsavel||'Administração')+' · '+escapeHtml(note.observacao)+'</div>':'';
+  return '<div class="pending-card"><div><strong>'+escapeHtml(x.name||'Nome não disponível')+'</strong><p class="sub">'+escapeHtml(x.email||'Sem e-mail cadastrado')+' · '+escapeHtml(x.city||'Município não informado')+'</p>'+last+'</div><div class="pending-card-actions"><button class="primary" type="button" data-id="'+escapeHtml(x.id)+'" onclick="openPendingEditor(this.dataset.id)">'+(x.email?'Conferir / corrigir':'Adicionar e-mail')+'</button>'+(x.email?'':'<button class="secondary" type="button" data-id="'+escapeHtml(x.id)+'" onclick="openPendingEditor(this.dataset.id, true)">Não localizado</button>')+'</div></div>';
+ }).join(''):'<div class="empty">Nenhuma pendência encontrada com esses filtros.</div>';
+}
+async function loadPendingReviews(){
+ const version=++pendingReviewTicket,uid=currentUser?.id;
+ if(currentRole!=='administracao'||!uid||!sb)return;
+ try{
+  const {data:rows,error}=await sb.rpc('listar_buscas_email_nao_localizado');
+  if(error)throw error;
+  if(version!==pendingReviewTicket||uid!==currentUser?.id||currentRole!=='administracao')return;
+  pendingReviewMetadata=new Map((rows||[]).filter(x=>typeof x.autoridade_id==='string').map(x=>[x.autoridade_id,x]));
+  pendingReviewRpcAvailable=true;
+ }catch(error){
+  if(version!==pendingReviewTicket||uid!==currentUser?.id||currentRole!=='administracao')return;
+  pendingReviewRpcAvailable=false;
+  console.warn('Histórico de buscas sem contato indisponível. Instale o SQL 66.',error?.message||error);
+ }
+ renderPendingCenter();
+}
+function closePendingEditor(){
+ if(pendingWriteBusy)return;
+ pendingSelectionTicket++;pendingSelectionId=null;pendingSelectionSnapshot=null;
+ if($('pendingEditor'))$('pendingEditor').hidden=true;
+ pendingInline('');
+}
+async function openPendingEditor(id,showNoEmail=false){
+ if(currentRole!=='administracao'||!currentUser||!sb||pendingWriteBusy)return;
+ const record=data.find(x=>x.id===id);
+ if(!record||!pendingRecords().some(x=>x.id===id))return;
+ const ticket=++pendingSelectionTicket,uid=currentUser.id;
+ pendingSelectionId=id;pendingSelectionSnapshot=null;
+ $('pendingEditor').hidden=false;
+ $('pendingEditorTitle').textContent=record.name||'Autoridade selecionada';
+ $('pendingEditorMeta').textContent=[categories[record.kind]||record.kind,record.city].filter(Boolean).join(' · ');
+ $('pendingEmailInput').value=String(record.email||'');
+ $('pendingSourceInput').value=String(record.fonte_oficial||sourceUrlFor(record)||'');
+ $('pendingNoEmailPanel').hidden=!!record.email;
+ $('pendingNoEmailSource').value=String(record.fonte_oficial||sourceUrlFor(record)||'');
+ $('pendingNoEmailNote').value='';
+ pendingInline('Preparando conferência administrativa...');
+ $('pendingEditor').scrollIntoView({behavior:'smooth',block:'start'});
+ try{
+  const {data:existing,error}=await sb.from('autoridades_ajustes_manuais').select('alteracoes').eq('autoridade_id',id).maybeSingle();
+  if(error)throw error;
+  if(ticket!==pendingSelectionTicket||uid!==currentUser?.id||currentRole!=='administracao')return;
+  const overrides=existing?.alteracoes;
+  pendingSelectionSnapshot={email:String(record.email||'').trim(),source:String(record.fonte_oficial||'').trim(),overrides:(overrides&&typeof overrides==='object'&&!Array.isArray(overrides))?{...overrides}:{}};
+  pendingInline('Dados carregados. Confira e-mail e fonte antes de confirmar.');
+  if(!record.email&&showNoEmail){$('pendingNoEmailSource').focus({preventScroll:true});}
+  else $('pendingEmailInput').focus({preventScroll:true});
+ }catch(error){
+  if(ticket!==pendingSelectionTicket)return;
+  pendingInline('Não foi possível ler os ajustes existentes: '+friendlyAuthError(error)+'. Não é seguro gravar sem essa consulta.','bad');
+ }
+}
+function pendingHttps(raw){
+ try{const u=new URL(raw);return u.protocol==='https:'&&Boolean(u.hostname)&&!u.username&&!u.password;}catch{return false;}
+}
+async function pendingRecheck(id,expected){
+ const {data:rows,error}=await sb.rpc('consultar_autoridades_seguras');
+ if(error)throw error;
+ const now=(rows||[]).find(x=>x.id===id);
+ if(!now)throw Error('Autoridade não encontrada na consulta atual. Atualize a página.');
+ if(String(now.email||'').trim()!==expected.email||String(now.fonte_oficial||'').trim()!==expected.source){
+  throw Error('O contato mudou desde a abertura do formulário. Atualize os dados antes de editar para não substituir outra correção.');
+ }
+ return now;
+}
+async function submitPendingResolution(event){
+ event.preventDefault();
+ if(pendingWriteBusy||!pendingSelectionSnapshot||!pendingSelectionId||currentRole!=='administracao'||!currentUser||!sb)return;
+ if(!$('pendingResolveForm').reportValidity())return;
+ const email=$('pendingEmailInput').value.trim(),source=$('pendingSourceInput').value.trim();
+ if(!validEmail({email})){pendingInline('Informe um endereço de e-mail válido.','bad');return;}
+ if(!pendingHttps(source)){pendingInline('A fonte deve ser uma URL HTTPS válida, sem usuário ou senha.','bad');return;}
+ const id=pendingSelectionId,uid=currentUser.id,snapshot={...pendingSelectionSnapshot};
+ const emailChanged=email!==snapshot.email,sourceChanged=source!==snapshot.source;
+ const operation=(emailChanged||sourceChanged)?'corrigir e confirmar':'confirmar';
+ if(!confirm('Deseja '+operation+' o contato de '+($('pendingEditorTitle').textContent||'esta autoridade')+'?\n\nE-mail: '+email+'\nFonte: '+source+'\n\nA ação será registrada no Supabase com sua identidade administrativa.'))return;
+ pendingWriteBusy=true;$('pendingResolveButton').disabled=true;$('pendingNoEmailButton').disabled=true;
+ pendingInline('Conferindo o cadastro e gravando a operação no Supabase...');
+ try{
+  await pendingRecheck(id,snapshot);
+  if(currentRole!=='administracao'||uid!==currentUser?.id)throw Error('Sessão administrativa alterada. Operação interrompida.');
+  if(emailChanged||sourceChanged){
+   // Releitura dos ajustes para não sobrescrever correções de outros campos.
+   const {data:existing,error:readError}=await sb.from('autoridades_ajustes_manuais').select('alteracoes').eq('autoridade_id',id).maybeSingle();
+   if(readError)throw readError;
+   const current=existing?.alteracoes;
+   const overrides=(current&&typeof current==='object'&&!Array.isArray(current))?{...current}:{};
+   overrides.email=email;overrides.fonte_oficial=source;
+   const {data:result,error}=await sb.rpc('salvar_edicao_autoridade',{
+    p_autoridade_id:id,p_alteracoes:overrides,p_salvar_ajustes:true,p_atualizar_telefone:false,p_telefone:null
+   });
+   if(error)throw error;
+   if(result!==id)throw Error('O Supabase não confirmou o identificador. Consulte o registro antes de reenviar.');
+  }else{
+   const {data:result,error}=await sb.rpc('registrar_verificacao_humana',{
+    p_autoridade_id:id,p_fonte_url:source,p_observacao:'Conferência humana realizada na Central de Pendências 4.3.'
+   });
+   if(error)throw error;
+   if(typeof result!=='string'||!result.includes('registrada'))throw Error('A confirmação não retornou o resultado esperado. Confira no banco antes de repetir.');
+  }
+  await loadData();
+  const latest=data.find(x=>x.id===id);
+  if(!loaded){setPendingGlobal('A gravação pode ter ocorrido, mas o site não conseguiu atualizar os dados. Confira no Supabase antes de repetir.','bad');}
+  else if(latest?.status_verificacao==='verificado'){
+   closePendingEditorAfterSave();setPendingGlobal('Contato conferido e registrado no histórico do Supabase.','good');
+  }else{
+   pendingInline('A operação foi enviada, mas o contato ainda aparece pendente. Confira a fonte e o histórico antes de tentar novamente.','bad');
+  }
+ }catch(error){pendingInline('Não foi possível confirmar a operação: '+friendlyAuthError(error)+'. Confira o cadastro antes de reenviar.','bad');}
+ finally{pendingWriteBusy=false;$('pendingResolveButton').disabled=false;$('pendingNoEmailButton').disabled=false;}
+}
+function closePendingEditorAfterSave(){
+ pendingSelectionTicket++;pendingSelectionId=null;pendingSelectionSnapshot=null;
+ $('pendingEditor').hidden=true;pendingInline('');
+}
+async function submitPendingNoEmail(event){
+ event.preventDefault();
+ if(pendingWriteBusy||!pendingSelectionSnapshot||!pendingSelectionId||currentRole!=='administracao'||!currentUser||!sb)return;
+ const id=pendingSelectionId,uid=currentUser.id,snapshot={...pendingSelectionSnapshot};
+ if(snapshot.email){pendingInline('Já existe e-mail cadastrado. Use Confirmar ou Corrigir.','bad');return;}
+ if(!$('pendingNoEmailForm').reportValidity())return;
+ const source=$('pendingNoEmailSource').value.trim(),note=$('pendingNoEmailNote').value.trim();
+ if(!pendingHttps(source)||note.length<10){pendingInline('Informe a página HTTPS consultada e uma descrição com pelo menos 10 caracteres.','bad');return;}
+ if(!confirm('Registrar que você procurou o e-mail e não o localizou?\n\nA autoridade continuará em Pendências, mas a busca ficará documentada.'))return;
+ pendingWriteBusy=true;$('pendingResolveButton').disabled=true;$('pendingNoEmailButton').disabled=true;
+ pendingInline('Registrando a busca realizada no Supabase...');
+ try{
+  const latest=await pendingRecheck(id,snapshot);
+  if(latest.email)throw Error('O registro já possui e-mail; atualize a página.');
+  if(currentRole!=='administracao'||uid!==currentUser?.id)throw Error('Sessão administrativa alterada.');
+  const {data:result,error}=await sb.rpc('registrar_busca_email_nao_localizado',{
+   p_autoridade_id:id,p_fonte_url:source,p_observacao:note
+  });
+  if(error)throw error;
+  if(!result)throw Error('O banco não confirmou o registro. Consulte o histórico antes de repetir.');
+  await loadPendingReviews();
+  pendingInline('Busca documentada com sucesso. O contato continua pendente.','good');
+  setPendingGlobal('Busca sem contato registrada. A pendência permanece até um e-mail ser localizado.','good');
+  $('pendingNoEmailNote').value='';
+ }catch(error){pendingInline('Falha ao registrar a busca: '+friendlyAuthError(error)+'. Confira se instalou o SQL 66.','bad');}
+ finally{pendingWriteBusy=false;$('pendingResolveButton').disabled=false;$('pendingNoEmailButton').disabled=false;}
 }
 
 $('syncBadge').title='Status da conexão com o banco, não da verificação das fontes oficiais';

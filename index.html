@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Autoridades SP 4.2 — Redesign Liquid Glass</title>
+<title>Autoridades SP 4.2.1 — Procedência de Contatos</title>
 <style>
 :root{font-family:Inter,Arial,sans-serif;color:#1d2939;background:#f4f6fa}*{box-sizing:border-box}body{margin:0}aside{width:252px;background:#10243d;color:#cbd6e4;position:fixed;inset:0 auto 0 0;padding:25px 14px;overflow:auto}aside h2{color:white;margin:0 10px 4px;font-size:21px}aside small{display:block;margin:0 10px 28px;color:#9bb0c8}nav button{display:block;width:100%;background:none;border:0;color:inherit;text-align:left;padding:12px 14px;border-left:3px solid transparent;border-radius:5px;cursor:pointer;font-size:14px;margin:2px 0}nav button:hover,nav button.active{background:#ffffff19;color:white}nav button.active{border-left-color:#d4aa54}main{margin-left:252px;padding:34px;max-width:1600px}header{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}h1{font-size:27px;color:#10243d;margin:0 0 7px}p.muted{color:#667085;margin:0 0 25px}.pill{font-size:12px;border-radius:30px;padding:7px 11px;background:#fff1d6;color:#815500;font-weight:600}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:white;border:1px solid #e2e7ee;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 2px 6px #15263b06}.stat{font-size:29px;color:#10243d;font-weight:750;margin-bottom:6px}.sub{font-size:13px;color:#64748b;line-height:1.55}h3{margin:4px 0 17px;color:#10243d}button.primary{background:#153a62;color:white;border:0;border-radius:6px;padding:11px 16px;cursor:pointer}button.secondary{background:white;color:#153a62;border:1px solid #cbd5e1;border-radius:6px;padding:10px 14px;cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input,select,textarea{padding:11px;border:1px solid #ccd5e0;border-radius:6px;width:100%;font:inherit;background:white}label{display:block;font-size:13px;color:#475467;margin:0 0 6px;font-weight:600}.field{margin-bottom:15px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px}.toolbar input{flex:1;min-width:240px}.toolbar select{max-width:230px}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:#667085;background:#f8fafc;font-size:12px}td,th{padding:13px 11px;border-bottom:1px solid #edf0f4;vertical-align:top}td button{background:none;border:0;color:#145b96;cursor:pointer}.tag{padding:4px 8px;border-radius:20px;background:#f1f5f9;font-size:11px;display:inline-block}section{display:none}section.on{display:block}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.empty{padding:35px 20px;text-align:center;color:#667085}.hint{background:#fff8e8;border:1px solid #f4e3bd;padding:14px;border-radius:8px;font-size:13px;color:#805b1d;margin-bottom:20px;line-height:1.5}.check{display:flex;gap:8px;align-items:center;margin:12px 0;font-size:14px}.check input{width:auto}.search-help{display:flex;gap:8px;flex-wrap:wrap;margin:-5px 0 16px}.search-help button{border:1px solid #d6dfe9;background:#f8fafc;color:#36516d;border-radius:20px;padding:7px 10px;font-size:12px;cursor:pointer}.search-help button:hover{background:#e8eff7}.table-check{width:17px;height:17px;cursor:pointer}.selection-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0 17px}.selection-bar .sub{margin-right:auto}.small-note{font-size:12px;color:#667085;margin:8px 0 14px}.badge-region{color:#385674;font-size:12px;margin-top:5px}.actions{display:flex;gap:8px;flex-wrap:wrap}footer{margin-top:35px;color:#8995a6;font-size:12px}@media(max-width:850px){aside{position:static;width:100%;padding:15px}aside small{margin-bottom:10px}nav{display:flex;overflow:auto}nav button{min-width:150px}main{margin:0;padding:20px}.cards,.grid2{grid-template-columns:1fr}.card{overflow-x:auto}}
 
@@ -329,7 +329,7 @@ body[data-mode=dark] .system-notice.notice-error{background:#4a282a;border-color
 @media(max-width:470px){nav,.nav-children{grid-template-columns:1fr}}
 
 /* ============================================================
-   Autoridades SP 4.2 — Redesign Liquid Glass Premium
+   Autoridades SP 4.2.1 — Redesign Liquid Glass Premium
    Camada somente-CSS. Nenhuma regra de negócio é tocada.
    1 Tokens · 2 Base · 3 Sidebar · 4 Cards/Dashboard · 5 Botões
    6 Formulários · 7 Busca/Tabelas · 8 Verificação · 9 Avisos
@@ -396,32 +396,6 @@ nav button.active svg{opacity:1;color:var(--gold-400)}
 .nav-children button,.nav-children button:nth-child(n){min-height:36px;font-size:12.8px;padding:7px 10px}
 .nav-children button.active:nth-child(n)::before{left:-11px;top:8px;bottom:8px;width:3px}
 .nav-subhead{margin:12px 10px 4px;font-size:10.5px;letter-spacing:.7px;color:#8fa8c4}
-
-/* 3b · ÍCONES DO MENU — um ícone exclusivo por entrada (CSS puro; o JS e os ids permanecem intactos) */
-nav button[data-page] svg,nav button[data-nav-group] svg{display:none}
-nav button[data-page]::after,nav button[data-nav-group]::after{content:'';order:-1;flex:none;width:18px;height:18px;background:currentColor;opacity:.8;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat;transition:transform var(--t) var(--ease),opacity var(--t-fast)}
-nav button:hover::after{opacity:1;transform:scale(1.1)}
-nav button.active::after,nav button.is-current::after{opacity:1;background:var(--gold-400)}
-.nav-children button[data-page]::after{width:16px;height:16px}
-nav button[data-page=dashboard]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='9' rx='1.5'/%3E%3Crect x='14' y='3' width='7' height='5' rx='1.5'/%3E%3Crect x='14' y='12' width='7' height='9' rx='1.5'/%3E%3Crect x='3' y='16' width='7' height='5' rx='1.5'/%3E%3C/svg%3E")}
-nav button[data-page=buscar]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E")}
-nav button[data-nav-group=autoridades]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='8' r='3.5'/%3E%3Cpath d='M2.5 20v-1a6.5 6.5 0 0 1 13 0v1'/%3E%3Cpath d='M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14a6 6 0 0 1 3 5.2V20'/%3E%3C/svg%3E")}
-nav button[data-page=deputado_estadual]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21h18M5 21v-7M9.5 21v-7M14.5 21v-7M19 21v-7M3 14h18M6 14a6 6 0 0 1 12 0M12 8V4'/%3E%3C/svg%3E")}
-nav button[data-page=secretario_estadual]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='7' width='18' height='13' rx='2'/%3E%3Cpath d='M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18M12 12v2'/%3E%3C/svg%3E")}
-nav button[data-page=secretario_municipal]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21h18M5 21V7l6-3v17M11 21V10l8 3v8M8 9h.01M8 13h.01M8 17h.01M15 16h.01M15 19h.01'/%3E%3C/svg%3E")}
-nav button[data-page=vereador]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='3' width='6' height='11' rx='3'/%3E%3Cpath d='M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6'/%3E%3C/svg%3E")}
-nav button[data-page=prefeito]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10 12 3l9 7M5 10v11h14V10M9 21v-7h6v7'/%3E%3C/svg%3E")}
-nav button[data-page=governador]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 21V4M5 4h12l-2.5 4L17 12H5'/%3E%3C/svg%3E")}
-nav button[data-page=vice_governador]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 4 6v6c0 4.5 3.2 7.8 8 9 4.8-1.2 8-4.5 8-9V6l-8-3Z'/%3E%3Cpath d='m9 13.5 3-3 3 3'/%3E%3C/svg%3E")}
-nav button[data-page=subprefeito]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E")}
-nav button[data-page=outro]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='4'/%3E%3Cpath d='M8 12h.01M12 12h.01M16 12h.01'/%3E%3C/svg%3E")}
-nav button[data-page=gerador]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6h11M4 12h11M4 18h7M18 14v6M15 17h6'/%3E%3C/svg%3E")}
-nav button[data-page=atualizacoes]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 7v5h-5M4 17v-5h5'/%3E%3Cpath d='M5 9a8 8 0 0 1 14-2l1 5M4 12l1 5a8 8 0 0 0 14-2'/%3E%3C/svg%3E")}
-nav button[data-page=fontes]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1'/%3E%3C/svg%3E")}
-nav button[data-page=aparencia]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3a9 9 0 1 0 0 18c1.1 0 2-.9 2-2 0-.6-.2-1-.5-1.4-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.3A3.7 3.7 0 0 0 21 11 9 9 0 0 0 12 3Z'/%3E%3Cpath d='M7.5 11h.01M10 7.5h.01M14.5 7.5h.01'/%3E%3C/svg%3E")}
-nav button[data-nav-group=gestao]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 3 9 5-9 5-9-5 9-5Z'/%3E%3Cpath d='m3 13 9 5 9-5'/%3E%3C/svg%3E")}
-nav button[data-page=administracao]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h10M18 7h2M4 17h2M10 17h10'/%3E%3Ccircle cx='16' cy='7' r='2'/%3E%3Ccircle cx='8' cy='17' r='2'/%3E%3C/svg%3E")}
-nav button[data-page=pendencias]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E")}
 
 /* 4 · CARDS & DASHBOARD */
 .card{background:var(--glass);border:1px solid var(--edge);border-radius:var(--r-lg);padding:22px 24px;box-shadow:var(--hi),var(--sh1);backdrop-filter:blur(18px) saturate(1.35);-webkit-backdrop-filter:blur(18px) saturate(1.35);transition:box-shadow var(--t) var(--ease),transform var(--t) var(--ease),border-color var(--t)}
@@ -618,6 +592,15 @@ aside :focus-visible{outline-color:var(--gold-400);box-shadow:0 0 0 3px rgba(214
 @media(prefers-contrast:more){.card,.tag,input,select,textarea,button.secondary{border-color:currentColor}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.cards>.card,section.on{opacity:1!important;transform:none!important}}
 @media(prefers-reduced-transparency:reduce){.card,aside,.auth-panel,.contact-info-panel,.mobile-list-bar{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+
+/* Autoridades SP 4.2.1 — informações de procedência, mantendo o Liquid Glass */
+.contact-info-panel .verify-facts{display:grid;gap:9px;margin:12px 0}
+.contact-info-panel .verify-fact{display:grid;gap:2px;padding:7px 9px;background:color-mix(in srgb,var(--surface) 75%,var(--line));border-radius:9px}
+.contact-info-panel .verify-fact-label{font-size:10px;letter-spacing:.03em;text-transform:uppercase;font-weight:750;color:var(--muted)}
+.contact-info-panel .verify-fact-value{font-size:12px;line-height:1.45;color:var(--ink);overflow-wrap:anywhere}
+.contact-info-panel .verify-note{font-size:11px;line-height:1.5;color:var(--muted);margin:8px 0 0}
+.contact-info-panel .verify-source-link{display:inline-block;margin-top:2px;font-size:12px;font-weight:650;overflow-wrap:anywhere}
+@media (max-width:580px){.contact-info .contact-info-panel{max-width:calc(100vw - 40px)}}
 </style>
 </head>
 <body>
@@ -846,6 +829,28 @@ const norm=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLo
 const collator=new Intl.Collator('pt-BR',{sensitivity:'base',numeric:true});
 const sortName=(a,b)=>collator.compare(a.name||'',b.name||'');
 let data=[],current='dashboard',recipients=[],loaded=false,visibleItems=[];
+// Metadados de procedência: lidos exclusivamente pela RPC segura do Supabase.
+// Nunca reutilizar detalhes de uma sessão anterior ao trocar de usuário.
+let verificationMetadata=new Map(),verificationFetchVersion=0;
+async function loadVerificationMetadata(){
+ const requestVersion=++verificationFetchVersion;
+ const requestedUser=currentUser?.id||null;
+ const requestedRole=currentRole;
+ if(!sb||!loaded)return;
+ try{
+  const {data:rows,error}=await sb.rpc('consultar_procedencia_verificacoes');
+  if(error)throw error;
+  if(requestVersion!==verificationFetchVersion||requestedUser!==(currentUser?.id||null)||requestedRole!==currentRole)return;
+  verificationMetadata=new Map((rows||[]).filter(x=>x&&typeof x.autoridade_id==='string').map(x=>[x.autoridade_id,x]));
+ }catch(err){
+  if(requestVersion!==verificationFetchVersion||requestedUser!==(currentUser?.id||null)||requestedRole!==currentRole)return;
+  verificationMetadata.clear();
+  console.warn('Procedência detalhada indisponível; usando o estado da consulta principal.',err?.message||err);
+ }
+ // O status e a tabela permanecem funcionais mesmo se a RPC auxiliar falhar.
+ renderTable();
+}
+
 // Detecta redirecionamentos de recuperação ANTES da inicialização do Supabase,
 // que pode consumir os parâmetros de autenticação da URL.
 const recoveryLandingHint=(()=>{
@@ -875,6 +880,7 @@ function fmt(d){if(!d)return 'Não registrada';const x=new Date(d);return isNaN(
 function safeUrl(s){try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)?u.href:'#'}catch{return '#'}}
 async function api(path){const res=await fetch(SUPABASE_URL+'/rest/v1/'+path,{headers});if(!res.ok)throw Error('HTTP '+res.status);return res.json()}
 async function loadData(){
+ verificationFetchVersion++;verificationMetadata.clear();
  $('syncBadge').textContent='Conectando...';
  try{
    if(!sb)throw Error('Biblioteca Supabase indisponível; conecte à internet e tente novamente.');
@@ -885,6 +891,8 @@ async function loadData(){
   syncErrorMessage='';
  }catch(e){loaded=false;data=[];syncErrorMessage='Falha ao consultar o Supabase: '+e.message+'. Nenhum dado de demonstração será exibido.';$('syncBadge').textContent='Falha na conexão';$('syncBadge').style.background='#fee4e2';$('syncBadge').style.color='#b42318';}
  refresh();renderTable();renderOfficialSources();loadUpdates();
+ // Consulta auxiliar e não bloqueante; não altera dados nem regras de acesso.
+ if(loaded)void loadVerificationMetadata();
 }
 async function loadUpdates(){try{
  const records=await api('atualizacoes?select=tipo,iniciado_em,finalizado_em,status,registros_atualizados,registros_pendentes&order=iniciado_em.desc&limit=30');
@@ -965,12 +973,27 @@ function updateSystemNotice(){
 }
 function renderContactStatus(x){
  const ok=Boolean(x.email)&&verified(x);
- const state=ok?'Conferido':'A conferir';
- const desc=ok?'E-mail registrado como conferido na base. Isto não comprova a entrega de mensagens.':'O contato ainda exige conferência ou não foi localizado.';
- const url=sourceUrlFor(x);
- const dateInfo=x.ultima_verificacao?'<p>Data informada pela base: '+escapeHtml(fmt(x.ultima_verificacao))+'</p>':'';
- const info=(url?'<p><a href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">Consultar origem cadastrada</a></p>':'<p>Não há URL de origem cadastrada para este registro.</p>')+dateInfo;
- return '<span class="tag '+(ok?'tag-verified':'tag-pending')+'">'+(ok?'✓ ':'◷ ')+state+'</span><details class="contact-info" onmouseenter="this.open=true" onmouseleave="this.open=false"><summary aria-label="Informações sobre a conferência de '+escapeHtml(x.name)+'" title="Informações sobre a origem e verificação">i</summary><div class="contact-info-panel"><strong>'+escapeHtml(state)+'</strong><p>'+escapeHtml(desc)+'</p>'+info+'</div></details>';
+ const meta=ok?verificationMetadata.get(x.id):null;
+ const state=ok?'Conferido na fonte':'A conferir';
+ let content='',help='';
+ if(meta){
+  const method=meta.metodo==='humana'?'Conferência humana':meta.metodo==='automatica'?'Coleta automática':'Método não informado';
+  const responsible=meta.metodo==='automatica'?'Coleta automática':currentRole==='administracao'?(meta.responsavel||'Administração'):'Administração';
+  const checkedAt=meta.verificado_em?fmt(meta.verificado_em):'Data não informada';
+  const realSource=meta.fonte_url&&safeUrl(meta.fonte_url)!=='#'?safeUrl(meta.fonte_url):'';
+  const sourceLabel=realSource?'<a class="verify-source-link" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(realSource)+'">Abrir fonte da conferência</a>':'Fonte não disponibilizada para este perfil';
+  const facts=[['Método',method],['Conferido em',checkedAt],['Responsável',responsible]];
+  content='<div class="verify-facts">'+facts.map(([k,v])=>'<div class="verify-fact"><span class="verify-fact-label">'+escapeHtml(k)+'</span><span class="verify-fact-value">'+escapeHtml(v)+'</span></div>').join('')+'<div class="verify-fact"><span class="verify-fact-label">Fonte</span><span class="verify-fact-value">'+sourceLabel+'</span></div></div>';
+  help='Registro de conferência documental; não comprova que o e-mail recebe mensagens.';
+ }else{
+  const url=sourceUrlFor(x);
+  const sourceInfo=url?'<a class="verify-source-link" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(url)+'">Consultar origem cadastrada</a>':'Não há URL de origem disponível para este registro.';
+  const desc=ok?'O endereço está marcado como conferido na base, mas não há detalhes de autoria e data disponíveis nesta consulta.':'Este contato ainda exige análise ou não foi localizado.';
+  content='<p>'+escapeHtml(desc)+'</p><div class="verify-fact"><span class="verify-fact-label">Origem cadastrada</span><span class="verify-fact-value">'+sourceInfo+'</span></div>';
+  help='Não atribuímos método, responsável ou data sem registro correspondente.';
+ }
+ const hoverText=meta?('Conferido: '+(meta.metodo==='humana'?'humano':'automático')+' · '+(meta.verificado_em?fmt(meta.verificado_em):'data indisponível')):(ok?'Conferido na base; detalhes indisponíveis':'Pendente de conferência');
+ return '<span class="tag '+(ok?'tag-verified':'tag-pending')+'">'+(ok?'✓ ':'◷ ')+escapeHtml(state)+'</span><details class="contact-info" onmouseenter="this.open=true" onmouseleave="this.open=false"><summary aria-label="Informações sobre a conferência de '+escapeHtml(x.name)+'" title="'+escapeHtml(hoverText)+'">i</summary><div class="contact-info-panel"><strong>'+escapeHtml(state)+'</strong>'+content+'<p class="verify-note">'+escapeHtml(help)+'</p></div></details>';
 }
 function refresh(){
  const verifiedCount=data.filter(x=>x.email&&verified(x)).length,emailed=data.filter(x=>x.email).length;
@@ -2150,7 +2173,7 @@ async function syncAuthAndData(){
   if(ticket!==syncCounter)return;
   const changedAccount=(currentUser?.id||null)!==(user?.id||null);
   if(changedAccount)resetMyRequestState();
-  if(changedAccount||currentRole!==role){data=[];loaded=false;selectedIds.clear();recipients=[];syncErrorMessage='';}
+  if(changedAccount||currentRole!==role){data=[];loaded=false;selectedIds.clear();recipients=[];syncErrorMessage='';verificationFetchVersion++;verificationMetadata.clear();}
   currentUser=user;currentRole=role;if(role!=='administracao'){adminRows=null;adminWorking.clear();adminOriginal.clear();cancelEditAuthority();resetAdminUsersState();resetAdminCerimonialState();}
   $('authTopButton').textContent=user?'Minha conta · '+(role==='administracao'?'ADM':role==='cerimonial'?'Cerimonial':'Usuário'):'Entrar / Criar conta';
   renderNavigation();

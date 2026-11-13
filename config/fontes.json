@@ -1,0 +1,15 @@
+{
+  "versao": 1,
+  "observacao": "Registre somente fontes oficiais confirmadas. Não invente URLs ou e-mails. Cada fonte deve ter um adaptador compatível e ser revisada antes de publicação.",
+  "fontes": [
+    {
+      "municipio_ibge": "3550308",
+      "categoria": "vereador",
+      "adaptador": "cmsp_vereadores",
+      "url": "https://www.saopaulo.sp.leg.br/vereadores-json/",
+      "fonte_complementar": "https://www.saopaulo.sp.leg.br/atividade-legislativa/gabinetes/",
+      "situacao": "configurada",
+      "observacao": "Reutiliza o coletor existente da Câmara Municipal de São Paulo. Produz prévia para revisão, sem gravar no Supabase."
+    }
+  ]
+}

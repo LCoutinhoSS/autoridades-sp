@@ -1,0 +1,162 @@
+{
+  "descricao": "Snapshot para teste LOCAL; em producao, geografia lida do Supabase.",
+  "fonte": "https://www.al.sp.gov.br/repositorio/legislacao/lei.complementar/2011/lei.complementar-1139-16.06.2011.html",
+  "municipios": [
+    {
+      "nome": "Caieiras",
+      "subregiao": "norte"
+    },
+    {
+      "nome": "Cajamar",
+      "subregiao": "norte"
+    },
+    {
+      "nome": "Francisco Morato",
+      "subregiao": "norte"
+    },
+    {
+      "nome": "Franco da Rocha",
+      "subregiao": "norte"
+    },
+    {
+      "nome": "Mairiporã",
+      "subregiao": "norte"
+    },
+    {
+      "nome": "Arujá",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Biritiba-Mirim",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Ferraz de Vasconcelos",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Guararema",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Guarulhos",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Itaquaquecetuba",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Mogi das Cruzes",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Poá",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Salesópolis",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Santa Isabel",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Suzano",
+      "subregiao": "leste"
+    },
+    {
+      "nome": "Diadema",
+      "subregiao": "sudeste"
+    },
+    {
+      "nome": "Mauá",
+      "subregiao": "sudeste"
+    },
+    {
+      "nome": "Ribeirão Pires",
+      "subregiao": "sudeste"
+    },
+    {
+      "nome": "Rio Grande da Serra",
+      "subregiao": "sudeste"
+    },
+    {
+      "nome": "Santo André",
+      "subregiao": "sudeste"
+    },
+    {
+      "nome": "São Bernardo do Campo",
+      "subregiao": "sudeste"
+    },
+    {
+      "nome": "São Caetano do Sul",
+      "subregiao": "sudeste"
+    },
+    {
+      "nome": "Cotia",
+      "subregiao": "sudoeste"
+    },
+    {
+      "nome": "Embu das Artes",
+      "subregiao": "sudoeste"
+    },
+    {
+      "nome": "Embu-Guaçu",
+      "subregiao": "sudoeste"
+    },
+    {
+      "nome": "Itapecerica da Serra",
+      "subregiao": "sudoeste"
+    },
+    {
+      "nome": "Juquitiba",
+      "subregiao": "sudoeste"
+    },
+    {
+      "nome": "São Lourenço da Serra",
+      "subregiao": "sudoeste"
+    },
+    {
+      "nome": "Taboão da Serra",
+      "subregiao": "sudoeste"
+    },
+    {
+      "nome": "Vargem Grande Paulista",
+      "subregiao": "sudoeste"
+    },
+    {
+      "nome": "Barueri",
+      "subregiao": "oeste"
+    },
+    {
+      "nome": "Carapicuíba",
+      "subregiao": "oeste"
+    },
+    {
+      "nome": "Itapevi",
+      "subregiao": "oeste"
+    },
+    {
+      "nome": "Jandira",
+      "subregiao": "oeste"
+    },
+    {
+      "nome": "Osasco",
+      "subregiao": "oeste"
+    },
+    {
+      "nome": "Pirapora do Bom Jesus",
+      "subregiao": "oeste"
+    },
+    {
+      "nome": "Santana de Parnaíba",
+      "subregiao": "oeste"
+    },
+    {
+      "nome": "São Paulo",
+      "subregiao": "capital"
+    }
+  ]
+}

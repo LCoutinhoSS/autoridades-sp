@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Autoridades SP 4.3.1 — Ícones individuais por conta</title>
+<title>Autoridades SP 4.3.2 — Pesquisa geográfica oficial</title>
 <style>
 :root{font-family:Inter,Arial,sans-serif;color:#1d2939;background:#f4f6fa}*{box-sizing:border-box}body{margin:0}aside{width:252px;background:#10243d;color:#cbd6e4;position:fixed;inset:0 auto 0 0;padding:25px 14px;overflow:auto}aside h2{color:white;margin:0 10px 4px;font-size:21px}aside small{display:block;margin:0 10px 28px;color:#9bb0c8}nav button{display:block;width:100%;background:none;border:0;color:inherit;text-align:left;padding:12px 14px;border-left:3px solid transparent;border-radius:5px;cursor:pointer;font-size:14px;margin:2px 0}nav button:hover,nav button.active{background:#ffffff19;color:white}nav button.active{border-left-color:#d4aa54}main{margin-left:252px;padding:34px;max-width:1600px}header{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}h1{font-size:27px;color:#10243d;margin:0 0 7px}p.muted{color:#667085;margin:0 0 25px}.pill{font-size:12px;border-radius:30px;padding:7px 11px;background:#fff1d6;color:#815500;font-weight:600}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:white;border:1px solid #e2e7ee;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 2px 6px #15263b06}.stat{font-size:29px;color:#10243d;font-weight:750;margin-bottom:6px}.sub{font-size:13px;color:#64748b;line-height:1.55}h3{margin:4px 0 17px;color:#10243d}button.primary{background:#153a62;color:white;border:0;border-radius:6px;padding:11px 16px;cursor:pointer}button.secondary{background:white;color:#153a62;border:1px solid #cbd5e1;border-radius:6px;padding:10px 14px;cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input,select,textarea{padding:11px;border:1px solid #ccd5e0;border-radius:6px;width:100%;font:inherit;background:white}label{display:block;font-size:13px;color:#475467;margin:0 0 6px;font-weight:600}.field{margin-bottom:15px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px}.toolbar input{flex:1;min-width:240px}.toolbar select{max-width:230px}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:#667085;background:#f8fafc;font-size:12px}td,th{padding:13px 11px;border-bottom:1px solid #edf0f4;vertical-align:top}td button{background:none;border:0;color:#145b96;cursor:pointer}.tag{padding:4px 8px;border-radius:20px;background:#f1f5f9;font-size:11px;display:inline-block}section{display:none}section.on{display:block}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.empty{padding:35px 20px;text-align:center;color:#667085}.hint{background:#fff8e8;border:1px solid #f4e3bd;padding:14px;border-radius:8px;font-size:13px;color:#805b1d;margin-bottom:20px;line-height:1.5}.check{display:flex;gap:8px;align-items:center;margin:12px 0;font-size:14px}.check input{width:auto}.search-help{display:flex;gap:8px;flex-wrap:wrap;margin:-5px 0 16px}.search-help button{border:1px solid #d6dfe9;background:#f8fafc;color:#36516d;border-radius:20px;padding:7px 10px;font-size:12px;cursor:pointer}.search-help button:hover{background:#e8eff7}.table-check{width:17px;height:17px;cursor:pointer}.selection-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0 17px}.selection-bar .sub{margin-right:auto}.small-note{font-size:12px;color:#667085;margin:8px 0 14px}.badge-region{color:#385674;font-size:12px;margin-top:5px}.actions{display:flex;gap:8px;flex-wrap:wrap}footer{margin-top:35px;color:#8995a6;font-size:12px}@media(max-width:850px){aside{position:static;width:100%;padding:15px}aside small{margin-bottom:10px}nav{display:flex;overflow:auto}nav button{min-width:150px}main{margin:0;padding:20px}.cards,.grid2{grid-template-columns:1fr}.card{overflow-x:auto}}
 
@@ -722,6 +722,16 @@ aside .brand-avatar:focus-visible{outline-color:var(--gold-400)}
 .av-save-status.error{color:var(--err)}
 .av-save-status.success{color:var(--ok)}
 .av-foot button:disabled{opacity:.6;cursor:wait}
+
+/* v4.3.2 — filtros de geografia oficial (base IBGE + recortes estaduais) */
+.geo-filters{display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,1fr);gap:13px;padding:14px 16px;border:1px solid var(--line);border-radius:15px;background:color-mix(in srgb,var(--surface) 91%,transparent);margin:1px 0 14px}
+.geo-filters .field{min-width:0;margin:0}
+.geo-filters label{margin-bottom:7px}
+.geo-filters .geo-summary{grid-column:1/-1;font-size:12px;line-height:1.6;color:var(--muted);margin:0}
+.geo-filters select{min-width:0;max-width:none}
+.geo-filters select:disabled{opacity:.65}
+.geo-small-status{margin:9px 0 14px;font-size:12px;color:var(--muted);line-height:1.55}
+@media(max-width:680px){.geo-filters{grid-template-columns:1fr;padding:12px}}
 </style>
 </head>
 <body>
@@ -742,8 +752,16 @@ aside .brand-avatar:focus-visible{outline-color:var(--gold-400)}
 </div>
 <div class="hint system-notice" id="syncNotice" role="status" aria-live="polite">Conectando ao Supabase. Os registros serão exibidos somente quando carregados do banco online.</div>
 <section id="dashboard" class="on"><div class="cards" id="stats"></div><div class="card"><h3>Cobertura de e-mails por categoria</h3><div id="coverage"></div></div><div class="card"><h3>Consulta à base online</h3><p class="sub">Pesquise por nome, partido, região, cargo ou agrupamentos geográficos. Os resultados são ordenados alfabeticamente.</p><button class="primary" onclick="go('buscar')">Pesquisar autoridades</button></div></section>
-<section id="buscar"><div class="card"><h3>Busca inteligente de autoridades</h3><div class="toolbar"><input id="search" aria-label="Busca inteligente" placeholder="Ex.: Prefeitos da Baixada Santista" oninput="onSearchInput()" autocomplete="off"><select id="category" aria-label="Categoria" onchange="renderTable()"><option value="">Todas as categorias</option></select><button class="secondary" onclick="clearSearch()">Limpar filtros</button></div><div id="suggestionBox" class="suggestion-box" hidden></div><div class="search-help"><button onclick="setSearch('região do Alto Tietê')">Alto Tietê</button><button onclick="setSearch('Grande ABC')">Grande ABC</button><button onclick="setSearch('Baixada Santista')">Baixada Santista</button><button onclick="setSearch('Vereadores de Santos')">Vereadores de Santos</button></div><div class="recent-box"><span class="sub">Pesquisas recentes</span><div id="recentSearches" class="recent-items"></div><button class="tiny-btn" onclick="clearRecentSearches()">Limpar histórico</button></div><p class="small-note" id="searchInterpretation">Digite um nome, partido, município ou uma combinação de filtros.</p><div class="selection-bar"><span class="sub" id="resultCount">Carregando resultados...</span><button class="secondary" onclick="selectVisible()">Selecionar resultados com e-mail</button><button class="secondary" onclick="clearSelection()">Limpar seleção</button><button class="primary" onclick="openGeneratorFromSearch()">Ver lista selecionada (<span id="selectedCount">0</span>)</button></div><div style="overflow:auto"><table><thead><tr><th><input class="table-check" id="selectAllVisible" type="checkbox" aria-label="Selecionar resultados visíveis" onchange="toggleVisible(this.checked)"></th><th>Nome</th><th>Cargo / Partido</th><th>Município / Base eleitoral</th><th>E-mail</th><th>Verificação</th><th>Fonte</th></tr></thead><tbody id="rows"></tbody></table></div></div></section>
-<section id="gerador"><div class="card"><h3>Gerador de listas para Outlook</h3><p class="sub">Selecione autoridades na busca ou use os filtros abaixo. O gerador trabalha somente com registros carregados do Supabase. Confira os e-mails antes do envio.</p><div id="searchContext" class="context-banner" hidden></div><div class="grid2" id="groupChecks"></div><div class="field"><label>Município ou região (opcional)</label><input id="filterCity" placeholder="Ex.: Alto Tietê, Grande ABC, Suzano"></div><label class="check"><input type="checkbox" id="onlyVerified"> Somente e-mails com verificação registrada</label><div class="actions"><button class="primary" onclick="generate()">Gerar lista pelos filtros</button><button class="secondary" onclick="useSelection()">Usar autoridades selecionadas (<span id="selectedCountGenerator">0</span>)</button></div><div style="margin-top:20px"><label>Destinatários (separados por ponto e vírgula)</label><textarea id="generated" rows="7" readonly placeholder="Os endereços aparecerão aqui"></textarea></div><p class="sub" id="genCount"></p><div id="recipientList" style="margin:12px 0"></div><div class="actions"><button class="secondary" onclick="clearGenerated()">Limpar lista</button><button class="secondary" onclick="copyEmails()">Copiar para Outlook</button><button class="secondary" onclick="exportCsv()">Exportar CSV</button></div></div></section>
+<section id="buscar"><div class="card"><h3>Busca inteligente de autoridades</h3><div class="toolbar"><input id="search" aria-label="Busca inteligente" placeholder="Ex.: Prefeitos da Baixada Santista" oninput="onSearchInput()" autocomplete="off"><select id="category" aria-label="Categoria" onchange="renderTable()"><option value="">Todas as categorias</option></select><button class="secondary" onclick="clearSearch()">Limpar filtros</button></div><div class="geo-filters" aria-label="Filtros territoriais oficiais">
+  <div class="field"><label for="searchGeoRegion">Região territorial (fonte oficial)</label><select id="searchGeoRegion" onchange="geoRegionChanged('search')" disabled><option value="">Todas as regiões</option></select></div>
+  <div class="field"><label for="searchGeoCity">Município (IBGE)</label><select id="searchGeoCity" onchange="renderTable()" disabled><option value="">Todos os municípios</option></select></div>
+  <p class="geo-summary" id="geoStatus" role="status" aria-live="polite">Carregando classificações territoriais oficiais do Supabase...</p>
+</div><div id="suggestionBox" class="suggestion-box" hidden></div><div class="search-help"><button onclick="setSearch('região do Alto Tietê')">Alto Tietê</button><button onclick="setSearch('Grande ABC')">Grande ABC</button><button onclick="setSearch('Baixada Santista')">Baixada Santista</button><button onclick="setSearch('Vereadores de Santos')">Vereadores de Santos</button></div><div class="recent-box"><span class="sub">Pesquisas recentes</span><div id="recentSearches" class="recent-items"></div><button class="tiny-btn" onclick="clearRecentSearches()">Limpar histórico</button></div><p class="small-note" id="searchInterpretation">Digite um nome, partido, município ou uma combinação de filtros.</p><div class="selection-bar"><span class="sub" id="resultCount">Carregando resultados...</span><button class="secondary" onclick="selectVisible()">Selecionar resultados com e-mail</button><button class="secondary" onclick="clearSelection()">Limpar seleção</button><button class="primary" onclick="openGeneratorFromSearch()">Ver lista selecionada (<span id="selectedCount">0</span>)</button></div><div style="overflow:auto"><table><thead><tr><th><input class="table-check" id="selectAllVisible" type="checkbox" aria-label="Selecionar resultados visíveis" onchange="toggleVisible(this.checked)"></th><th>Nome</th><th>Cargo / Partido</th><th>Município / Base eleitoral</th><th>E-mail</th><th>Verificação</th><th>Fonte</th></tr></thead><tbody id="rows"></tbody></table></div></div></section>
+<section id="gerador"><div class="card"><h3>Gerador de listas para Outlook</h3><p class="sub">Selecione autoridades na busca ou use os filtros abaixo. O gerador trabalha somente com registros carregados do Supabase. Confira os e-mails antes do envio.</p><div id="searchContext" class="context-banner" hidden></div><div class="grid2" id="groupChecks"></div><div class="field"><label>Município ou região (opcional)</label><input id="filterCity" placeholder="Ex.: Alto Tietê, Grande ABC, Suzano"></div><div class="geo-filters" aria-label="Filtro territorial oficial da lista de e-mails">
+ <div class="field"><label for="genGeoRegion">Região (fonte oficial)</label><select id="genGeoRegion" onchange="geoRegionChanged('gen')" disabled><option value="">Todas as regiões</option></select></div>
+ <div class="field"><label for="genGeoCity">Município (IBGE)</label><select id="genGeoCity" disabled><option value="">Todos os municípios</option></select></div>
+ <p class="geo-summary">Regiões e municípios oficiais filtram somente prefeitos e vereadores vinculados ao código IBGE. Para deputados estaduais, use os outros filtros da pesquisa.</p>
+</div><label class="check"><input type="checkbox" id="onlyVerified"> Somente e-mails com verificação registrada</label><div class="actions"><button class="primary" onclick="generate()">Gerar lista pelos filtros</button><button class="secondary" onclick="useSelection()">Usar autoridades selecionadas (<span id="selectedCountGenerator">0</span>)</button></div><div style="margin-top:20px"><label>Destinatários (separados por ponto e vírgula)</label><textarea id="generated" rows="7" readonly placeholder="Os endereços aparecerão aqui"></textarea></div><p class="sub" id="genCount"></p><div id="recipientList" style="margin:12px 0"></div><div class="actions"><button class="secondary" onclick="clearGenerated()">Limpar lista</button><button class="secondary" onclick="copyEmails()">Copiar para Outlook</button><button class="secondary" onclick="exportCsv()">Exportar CSV</button></div></div></section>
 <section id="pendencias"><div class="card"><div class="admin-panel-heading"><div><h3 style="margin-bottom:5px">Central de Pendências</h3><p class="sub" style="margin:0">Confirme, corrija ou registre uma busca sem e-mail, sem sair desta página. Acesso exclusivo da Administração.</p></div><span class="tag">Gestão interna</span></div>
 <div class="pending-notice" id="pendingGlobalStatus" role="status" aria-live="polite" hidden></div>
 <div class="pending-tools"><input type="search" id="pendingSearch" placeholder="Buscar nome, município ou e-mail" aria-label="Buscar pendências" oninput="renderPendingCenter()"><select id="pendingFilter" aria-label="Filtrar pendências" onchange="renderPendingCenter()"><option value="">Todas as pendências</option><option value="sem_email">Sem e-mail</option><option value="com_email">E-mail a conferir</option><option value="busca_registrada">Busca sem e-mail já registrada</option></select></div>
@@ -894,7 +912,7 @@ aside .brand-avatar:focus-visible{outline-color:var(--gold-400)}
 </div>
 <div class="card"><h3>Exportação administrativa</h3><p class="sub">Baixe somente os dados que sua sessão atual está autorizada a consultar. As correções manuais são mantidas separadamente dos dados coletados.</p><button class="secondary" onclick="backup()">Baixar dados consultados (JSON)</button></div>
 </section>
-<footer>Autoridades SP 4.3.1 · Consulta institucional de informações públicas e autorizadas · Fontes e disponibilidade são atualizadas conforme a base online.</footer>
+<footer>Autoridades SP 4.3.2 · Consulta institucional de informações públicas e autorizadas · Fontes e disponibilidade são atualizadas conforme a base online.</footer>
 </main><div class="mobile-list-bar"><button class="primary" onclick="openGeneratorFromSearch()">Ver lista selecionada (<span id="mobileSelectedCount">0</span>)</button></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1007,12 +1025,9 @@ let currentUser=null,currentRole='publico',authMode='login',authBusy=false,recov
 const sb=window.supabase?.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 const selectedIds=new Set();
-const regions={
- 'alto tiete':['Arujá','Biritiba-Mirim','Ferraz de Vasconcelos','Guararema','Itaquaquecetuba','Mogi das Cruzes','Poá','Salesópolis','Santa Isabel','Suzano'],
- 'grande abc':['Santo André','São Bernardo do Campo','São Caetano do Sul','Diadema','Mauá','Ribeirão Pires','Rio Grande da Serra'],
- 'baixada santista':['Bertioga','Cubatão','Guarujá','Itanhaém','Mongaguá','Peruíbe','Praia Grande','Santos','São Vicente']
-};
-const regionAliases={'alto tiete':['alto tiete','regiao do alto tiete'],'grande abc':['grande abc','abc paulista','regiao do abc','abc'], 'baixada santista':['baixada santista','regiao da baixada santista','baixada']};
+// A geografia oficial é consultada do Supabase; nenhuma lista de municípios fica fixa no JavaScript.
+const geoState={ready:false,municipios:[],regioes:[],vinculos:[],autoridades:new Map(),municipiosPorCodigo:new Map(),opcoes:[],cache:new Map()};
+let geoLoadSerial=0;
 // Classificação operacional e discutível, não um atributo oficial dos parlamentares.
 // Partidos com posicionamento heterogêneo podem permanecer sem classificação.
 const politicalGroups={esquerda:['PT','PSOL','PCDOB','PC DO B','PCB','PSTU','UP'],centro:['MDB','PSD','PSDB','CIDADANIA','PODEMOS'],direita:['PL','NOVO','REPUBLICANOS','PP','PRD']};
@@ -1022,7 +1037,134 @@ const wordIn=(text,term)=>new RegExp('(^| )'+term.replace(/[.*+?^${}()|[\]\\]/g,
 function fmt(d){if(!d)return 'Não registrada';const x=new Date(d);return isNaN(x)?'Não registrada':x.toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short',timeZone:'America/Sao_Paulo'})}
 function safeUrl(s){try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)?u.href:'#'}catch{return '#'}}
 async function api(path){const res=await fetch(SUPABASE_URL+'/rest/v1/'+path,{headers});if(!res.ok)throw Error('HTTP '+res.status);return res.json()}
+
+// Consulta pública das três tabelas geográficas e da RPC restrita aos IDs visíveis.
+// Jamais usar a região de atuação eleitoral como se fosse município de representação.
+async function loadGeography(){
+ const ticket=++geoLoadSerial;
+ const userId=currentUser?.id||null;
+ const status=$('geoStatus');
+ geoState.ready=false;
+ if(status)status.textContent='Carregando as divisões oficiais do Supabase...';
+ try{
+  if(!sb||!loaded)throw Error('A consulta principal ainda não está disponível.');
+  const [a,b,c,d]=await Promise.all([
+   sb.from('municipios').select('codigo_ibge,nome,regiao_imediata,regiao_intermediaria').order('nome').limit(1000),
+   sb.from('regioes').select('id,nome,tipo,fonte').order('nome').limit(1000),
+   sb.from('municipios_regioes').select('codigo_ibge,regiao_id').limit(5000),
+   sb.rpc('consultar_vinculos_municipais_seguros')
+  ]);
+  if(ticket!==geoLoadSerial||userId!==(currentUser?.id||null))return;
+  for(const result of [a,b,c,d])if(result.error)throw Error(result.error.message);
+  const municipios=a.data||[],regioes=b.data||[],vinculos=c.data||[],refs=d.data||[];
+  if(municipios.length!==645)throw Error('O cadastro IBGE retornou '+municipios.length+' municípios (esperado: 645).');
+  geoState.municipios=municipios;
+  geoState.regioes=regioes;
+  geoState.vinculos=vinculos;
+  geoState.municipiosPorCodigo=new Map(municipios.map(m=>[String(m.codigo_ibge).trim(),m]));
+  geoState.autoridades=new Map(refs.filter(r=>r&&r.autoridade_id).map(r=>[r.autoridade_id,String(r.municipio_ibge||'').trim()]));
+  const groups=[
+    {title:'Regiões metropolitanas',values:regioes.filter(r=>r.tipo==='regiao_metropolitana').map(r=>({value:'reg:'+r.id,label:r.nome}))},
+    {title:'Sub-regiões metropolitanas',values:regioes.filter(r=>r.tipo==='subregiao_metropolitana').map(r=>({value:'reg:'+r.id,label:r.nome}))},
+    {title:'Regiões geográficas imediatas (IBGE)',values:[...new Set(municipios.map(m=>m.regiao_imediata).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR')).map(n=>({value:'imediata:'+n,label:n}))},
+    {title:'Regiões geográficas intermediárias (IBGE)',values:[...new Set(municipios.map(m=>m.regiao_intermediaria).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR')).map(n=>({value:'intermediaria:'+n,label:n}))},
+    {title:'Agrupamentos complementares',values:regioes.filter(r=>r.tipo==='agrupamento').map(r=>({value:'reg:'+r.id,label:r.nome}))}
+  ];
+  const classified=new Set(['regiao_metropolitana','subregiao_metropolitana','agrupamento']);
+  groups.push({title:'Outras divisões cadastradas',values:regioes.filter(r=>!classified.has(r.tipo)).map(r=>({value:'reg:'+r.id,label:r.nome}))});
+  geoState.opcoes=groups;
+  geoState.cache.clear();geoState.ready=true;
+  initGeoSelectors();
+  if(status)status.textContent='Geografia oficial conectada: '+municipios.length+' municípios, '+regioes.length+' regiões cadastradas e '+vinculos.length+' vínculos. Regiões filtram prefeitos e vereadores pelo município de exercício, não por base eleitoral.';
+  renderTable();renderSuggestions();
+ }catch(err){
+  if(ticket!==geoLoadSerial||userId!==(currentUser?.id||null))return;
+  geoState.ready=false;geoState.autoridades.clear();geoState.cache.clear();
+  initGeoSelectors();
+  if(status)status.textContent='Filtros territoriais indisponíveis: '+(err.message||'erro na consulta')+'. A busca geral continua funcionando; confira o SQL 72 e as permissões públicas de leitura.';
+  console.warn('Não foi possível carregar a geografia oficial:',err);
+  renderTable();
+ }
+}
+function geoCodeSet(value){
+ if(!value||!geoState.ready)return null;
+ if(geoState.cache.has(value))return geoState.cache.get(value);
+ let result=new Set();
+ if(value.startsWith('reg:')){
+  const id=value.slice(4);
+  for(const v of geoState.vinculos)if(v.regiao_id===id)result.add(String(v.codigo_ibge).trim());
+ }else if(value.startsWith('imediata:')){
+  const n=value.slice(9);
+  for(const m of geoState.municipios)if(m.regiao_imediata===n)result.add(String(m.codigo_ibge).trim());
+ }else if(value.startsWith('intermediaria:')){
+  const n=value.slice(14);
+  for(const m of geoState.municipios)if(m.regiao_intermediaria===n)result.add(String(m.codigo_ibge).trim());
+ }
+ geoState.cache.set(value,result);
+ return result;
+}
+function geoMatchesAuthority(x,regValue,cityCode){
+ if(!regValue&&!cityCode)return true;
+ if(!geoState.ready)return false;
+ if(x.kind!=='prefeito'&&x.kind!=='vereador')return false;
+ const code=geoState.autoridades.get(x.id)||'';
+ if(!code||cityCode&&code!==cityCode)return false;
+ const allowed=geoCodeSet(regValue);
+ return !allowed||allowed.has(code);
+}
+function geoRegionChanged(area){
+ const r=$((area==='gen'?'gen':'search')+'GeoRegion');
+ updateGeoCityOptions(area,r.value);
+ if(area==='search')renderTable();
+}
+function updateGeoCityOptions(area,regionValue){
+ const sel=$((area==='gen'?'gen':'search')+'GeoCity');
+ const previous=sel.value;
+ const allowed=geoCodeSet(regionValue);
+ const municipios=geoState.municipios.filter(m=>!allowed||allowed.has(String(m.codigo_ibge).trim()));
+ sel.innerHTML='<option value="">Todos os municípios</option>'+municipios.map(m=>'<option value="'+escapeHtml(String(m.codigo_ibge).trim())+'">'+escapeHtml(m.nome)+'</option>').join('');
+ sel.disabled=!geoState.ready;
+ if(municipios.some(m=>String(m.codigo_ibge).trim()===previous))sel.value=previous;
+}
+function initGeoSelectors(){
+ for(const area of ['search','gen']){
+  const rs=$(area+'GeoRegion');
+  const old=rs.value;
+  const opts=geoState.opcoes.map(g=>g.values.length?'<optgroup label="'+escapeHtml(g.title)+'">'+g.values.map(o=>'<option value="'+escapeHtml(o.value)+'">'+escapeHtml(o.label)+'</option>').join('')+'</optgroup>':'').join('');
+  rs.innerHTML='<option value="">Todas as regiões</option>'+opts;
+  rs.disabled=!geoState.ready;
+  if(geoState.ready&&geoState.opcoes.some(g=>g.values.some(o=>o.value===old)))rs.value=old;
+  updateGeoCityOptions(area,rs.value);
+ }
+}
+// Interpretação livre opcional, sem listas manuais de cidades ou regiões.
+function geoRegionFromQuery(raw){
+ if(!geoState.ready)return null;
+ const text=norm(raw);
+ let aliases=[];
+ for(const r of geoState.regioes){
+  const value='reg:'+r.id;
+  const names=[r.nome];
+  if(r.id==='rmsp')names.push('rmsp');
+  if(r.id.startsWith('rmsp-'))names.push('rmsp '+r.id.slice(5));
+  for(const name of names)aliases.push({value,label:r.nome,match:norm(name)});
+ }
+ // Maior expressão primeiro: "RMSP Leste" tem prioridade sobre "RMSP".
+ aliases.sort((a,b)=>b.match.length-a.match.length);
+ for(const a of aliases){
+  if(!a.match)continue;
+  const found=text.indexOf(a.match);
+  if(found>=0&&(found===0||text[found-1]===' ')&&(!text[found+a.match.length]||text[found+a.match.length]===' '))return a;
+ }
+ return null;
+}
+function geoRegionLabel(value){
+ for(const group of geoState.opcoes)for(const item of group.values)if(item.value===value)return item.label;
+ return value;
+}
+
 async function loadData(){
+ ++geoLoadSerial;geoState.ready=false;
  verificationFetchVersion++;verificationMetadata.clear();
  $('syncBadge').textContent='Conectando...';
  try{
@@ -1035,7 +1177,8 @@ async function loadData(){
  }catch(e){loaded=false;data=[];syncErrorMessage='Falha ao consultar o Supabase: '+e.message+'. Nenhum dado de demonstração será exibido.';$('syncBadge').textContent='Falha na conexão';$('syncBadge').style.background='#fee4e2';$('syncBadge').style.color='#b42318';}
  refresh();renderTable();renderOfficialSources();loadUpdates();
  // Consulta auxiliar e não bloqueante; não altera dados nem regras de acesso.
- if(loaded)void loadVerificationMetadata();
+ if(loaded){void loadVerificationMetadata();void loadGeography();}
+ else {initGeoSelectors();if($('geoStatus'))$('geoStatus').textContent='Filtros oficiais indisponíveis enquanto a base de autoridades não carregar.';}
 }
 async function loadUpdates(){try{
  const records=await api('atualizacoes?select=tipo,iniciado_em,finalizado_em,status,registros_atualizados,registros_pendentes&order=iniciado_em.desc&limit=30');
@@ -1198,7 +1341,8 @@ function renderOfficialSources(){
 }
 function extractQuery(raw){
  let text=norm(raw),region=null,ideology=null,party=null,kind=null;
- for(const [key,aliases] of Object.entries(regionAliases)){for(const alias of aliases){const n=norm(alias);if(text.includes(n)){region=key;text=text.replace(n,' ');break}}if(region)break}
+ const geo=geoRegionFromQuery(raw);
+ if(geo){region=geo.value;const pos=text.indexOf(geo.match);if(pos!==-1)text=(text.slice(0,pos)+' '+text.slice(pos+geo.match.length)).trim();}
  for(const [key,aliases] of Object.entries(politicalAliases)){for(const alias of aliases){const n=norm(alias);if(new RegExp('(^| )'+n+'(?= |$)').test(text)){ideology=key;text=text.replace(new RegExp('(^| )'+n+'(?= |$)'),' ');break}}if(ideology)break}
  const kindPhrases=[['deputado_estadual',['deputados estaduais','deputado estadual','deputados','deputado']],['vereador',['vereadores','vereador']],['prefeito',['prefeitos','prefeito']],['secretario_estadual',['secretarios estaduais','secretario estadual']],['secretario_municipal',['secretarios municipais','secretario municipal']]];
  for(const [key,aliases] of kindPhrases){for(const alias of aliases){if(new RegExp('(^| )'+alias+'(?= |$)').test(text)){kind=key;text=text.replace(new RegExp('(^| )'+alias+'(?= |$)'),' ');break}}if(kind)break}
@@ -1206,7 +1350,7 @@ function extractQuery(raw){
  text=text.replace(/\b(do|da|de|dos|das|no|na|nos|nas|partido|partidos|regiao|em|que|atuam|atuacao)\b/g,' ').replace(/\s+/g,' ').trim();
  return {region,ideology,party,kind,free:text};
 }
-function matchRegion(x,key){const hay=norm([x.regiao_atuacao,x.city].join(' '));if(!hay)return false;return [key,...regions[key].map(norm)].some(term=>hay.includes(norm(term)))}
+function matchRegion(x,key){return geoMatchesAuthority(x,key,'')}
 function matchText(x,query){const hay=norm([x.name,x.role,x.org,x.city,x.email,x.phone,x.partido,x.regiao_atuacao].join(' '));return query.split(' ').filter(Boolean).every(term=>hay.includes(term))}
 function filterSmart(items,query){const parsed=extractQuery(query);const result=items.filter(x=>{
  if(parsed.kind&&x.kind!==parsed.kind)return false;
@@ -1215,15 +1359,17 @@ function filterSmart(items,query){const parsed=extractQuery(query);const result=
  if(parsed.region&&!matchRegion(x,parsed.region))return false;
  return !parsed.free||matchText(x,parsed.free);
  });return {result,parsed};}
-function explainQuery(parsed){const parts=[];if(parsed.kind)parts.push(categories[parsed.kind]);if(parsed.ideology)parts.push('classificação política: '+parsed.ideology+' (interpretativa)');if(parsed.party)parts.push('partido: '+parsed.party);if(parsed.region)parts.push('região: '+(parsed.region==='alto tiete'?'Alto Tietê':parsed.region==='baixada santista'?'Baixada Santista':'Grande ABC'));if(parsed.free)parts.push('termos: '+parsed.free);return parts.length?'Filtros interpretados: '+parts.join(' · ')+'.':'Digite um nome, partido, município ou uma combinação de filtros.'}
+function explainQuery(parsed){const parts=[];if(parsed.kind)parts.push(categories[parsed.kind]);if(parsed.ideology)parts.push('classificação política: '+parsed.ideology+' (interpretativa)');if(parsed.party)parts.push('partido: '+parsed.party);if(parsed.region)parts.push('região: '+geoRegionLabel(parsed.region));if(parsed.free)parts.push('termos: '+parsed.free);return parts.length?'Filtros interpretados: '+parts.join(' · ')+'.':'Digite um nome, partido, município ou uma combinação de filtros.'}
 function renderTable(){
- const q=$('search').value,c=$('category').value,base=data.filter(x=>!c||x.kind===c),filtered=filterSmart(base,q);visibleItems=filtered.result.sort(sortName);
- $('searchInterpretation').textContent=explainQuery(filtered.parsed);$('resultCount').textContent=visibleItems.length+' resultado(s), em ordem alfabética';
+ const q=$('search').value,c=$('category').value,base=data.filter(x=>!c||x.kind===c),filtered=filterSmart(base,q);
+ const regionValue=$('searchGeoRegion').value,cityCode=$('searchGeoCity').value;
+ visibleItems=filtered.result.filter(x=>geoMatchesAuthority(x,regionValue,cityCode)).sort(sortName);
+ $('searchInterpretation').textContent=explainQuery(filtered.parsed)+(regionValue?' · Região oficial: '+geoRegionLabel(regionValue)+'.':'')+(cityCode?' · Município IBGE: '+(geoState.municipiosPorCodigo.get(cityCode)?.nome||cityCode)+'.':'');$('resultCount').textContent=visibleItems.length+' resultado(s), em ordem alfabética';
  $('rows').innerHTML=visibleItems.length?visibleItems.map(x=>'<tr><td><input class="table-check" type="checkbox" '+(selectedIds.has(x.id)?'checked ':'')+(x.email?'':'disabled ')+'aria-label="Selecionar '+escapeHtml(x.name)+'" data-id="'+escapeHtml(x.id)+'" onchange="toggleOne(this.dataset.id,this.checked)"></td><td><b>'+escapeHtml(x.name)+'</b></td><td>'+escapeHtml(x.role||'—')+'<div class="badge-region">'+escapeHtml(x.partido||'Partido não informado')+'</div></td><td>'+escapeHtml(x.city||'—')+(x.regiao_atuacao?'<div class="badge-region">Base eleitoral: '+escapeHtml(x.regiao_atuacao)+'</div>':'')+'</td><td>'+escapeHtml(x.email||'—')+'</td><td>'+renderContactStatus(x)+'</td><td>'+(sourceUrlFor(x)?'<a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(sourceUrlFor(x))+'">Fonte</a>':'—')+'</td></tr>').join(''):'<tr><td colspan="7" class="empty">'+(loaded?'Nenhuma autoridade encontrada com esses filtros.':'Aguardando conexão com o banco.')+'</td></tr>';
  const selectable=visibleItems.filter(x=>x.email);$('selectAllVisible').checked=selectable.length>0&&selectable.every(x=>selectedIds.has(x.id));$('selectAllVisible').indeterminate=selectable.some(x=>selectedIds.has(x.id))&&!$('selectAllVisible').checked;updateSelectionCount();
 }
 function setSearch(q){$('search').value=q;go('buscar');renderTable();saveRecent(q);renderRecentSearches();renderSuggestions()}
-function clearSearch(){$('search').value='';$('category').value='';renderTable();renderSuggestions()}
+function clearSearch(){$('search').value='';$('category').value='';$('searchGeoRegion').value='';updateGeoCityOptions('search','');$('searchGeoCity').value='';renderTable();renderSuggestions()}
 function toggleOne(id,checked){if(checked)selectedIds.add(id);else selectedIds.delete(id);renderTable()}
 function toggleVisible(checked){for(const x of visibleItems){if(!x.email)continue;if(checked)selectedIds.add(x.id);else selectedIds.delete(x.id)}renderTable()}
 function selectVisible(){toggleVisible(true)}
@@ -1231,7 +1377,15 @@ function clearSelection(){selectedIds.clear();renderTable()}
 function updateSelectionCount(){const n=selectedIds.size;$('selectedCount').textContent=n;$('selectedCountGenerator').textContent=n}
 function validEmail(x){return typeof x.email==='string'&&/^[^\s@;]+@[^\s@;]+\.[^\s@;]+$/.test(x.email)&&!x.email.toLowerCase().endsWith('.invalid')}
 function uniqueRecipients(items){return [...new Map(items.filter(validEmail).sort(sortName).map(x=>[x.email.trim().toLowerCase(),x])).values()]}
-function generate(){if(!document.querySelector('.group:checked')&&!$('filterCity').value.trim()){alert('Escolha uma categoria ou informe um município/região para evitar incluir toda a base por engano.');return}const selected=[...document.querySelectorAll('.group:checked')].map(x=>x.value),regionQuery=$('filterCity').value.trim();let items=data.filter(x=>(!selected.length||selected.includes(x.kind))&&(!$('onlyVerified').checked||verified(x)));if(regionQuery)items=filterSmart(items,regionQuery).result;recipients=uniqueRecipients(items);renderRecipients()}
+function generate(){
+ const selected=[...document.querySelectorAll('.group:checked')].map(x=>x.value);
+ const regionQuery=$('filterCity').value.trim(),regionValue=$('genGeoRegion').value,cityCode=$('genGeoCity').value;
+ if(!selected.length&&!regionQuery&&!regionValue&&!cityCode){alert('Escolha uma categoria, município ou região para evitar incluir toda a base por engano.');return}
+ let items=data.filter(x=>(!selected.length||selected.includes(x.kind))&&(!$('onlyVerified').checked||verified(x)));
+ if(regionQuery)items=filterSmart(items,regionQuery).result;
+ if(regionValue||cityCode)items=items.filter(x=>geoMatchesAuthority(x,regionValue,cityCode));
+ recipients=uniqueRecipients(items);renderRecipients();
+}
 function useSelection(){recipients=uniqueRecipients(data.filter(x=>selectedIds.has(x.id)));renderRecipients()}
 function renderRecipients(){$('generated').value=recipients.map(x=>x.email).join('; ');$('genCount').textContent=recipients.length+' destinatário(s). Confira os endereços antes do envio.';$('recipientList').innerHTML=recipients.length?'<h3>Destinatários — remova individualmente</h3>'+recipients.map((x,i)=>'<div style="display:flex;gap:10px;align-items:center;justify-content:space-between;border-bottom:1px solid #edf0f4;padding:10px 0"><div><b>'+escapeHtml(x.name)+'</b><div class="sub">'+escapeHtml(x.email)+'</div></div><button class="secondary" onclick="removeRecipient('+i+')">✕ Remover</button></div>').join(''):'<p class="sub">Nenhum destinatário selecionado.</p>'}
 function removeRecipient(i){recipients.splice(i,1);renderRecipients()}
@@ -1266,7 +1420,7 @@ function resetPreferences(){prefs={theme:'classico',mode:'light',font:'normal',c
 const neutralSuggestions=['Baixada Santista','Alto Tietê','Grande ABC','Deputados estaduais','Prefeitos de Santos','Vereadores de Mogi das Cruzes','São Vicente','Itaquaquecetuba','Suzano'];
 let recentSearches=storageGet('autoridadesSP.recentes.v2',[]);
 function distance(a,b){a=norm(a);b=norm(b);let prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){let row=[i];for(let j=1;j<=b.length;j++)row[j]=Math.min(row[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=row}return prev[b.length]}
-function suggestionPool(){return [...new Set([...neutralSuggestions,...Object.values(regions).flat(),...data.map(x=>x.name).filter(Boolean)])]}
+function suggestionPool(){return [...new Set([...neutralSuggestions,...geoState.municipios.map(m=>m.nome),...geoState.regioes.map(r=>r.nome),...data.map(x=>x.name).filter(Boolean)])]}
 function renderSuggestions(){
  const raw=$('search').value.trim(),box=$('suggestionBox');
  if(!raw||raw.length<3){box.hidden=true;box.innerHTML='';return}
@@ -1287,6 +1441,9 @@ function openGeneratorFromSearch(){
  const q=$('search').value.trim();if(q)saveRecent(q);
  renderRecentSearches();
  $('filterCity').value=q;
+ $('genGeoRegion').value=$('searchGeoRegion').value;
+ updateGeoCityOptions('gen',$('genGeoRegion').value);
+ $('genGeoCity').value=$('searchGeoCity').value;
  document.querySelectorAll('.group').forEach(el=>el.checked=!!$('category').value&&el.value===$('category').value);
  const selected=data.filter(x=>selectedIds.has(x.id));
  const contextual=selected.length?selected:visibleItems.filter(validEmail);
@@ -2695,5 +2852,6 @@ window.AutoridadesSPAvatar={syncAccount};
 syncAccount(currentUser);
 }catch(err){console.warn('Ícone do menu indisponível:',err);}})();
 </script>
+<!-- Autoridades SP 4.3.2: filtros territoriais oficiais integrados ao Supabase -->
 </body>
 </html>

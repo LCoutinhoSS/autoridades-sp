@@ -29,6 +29,31 @@ class TestesMapeador(unittest.TestCase):
                     "https://example.com/", "https://user:pass@camara.sp.gov.br/"):
             self.assertFalse(m.url_publica(url), url)
 
+    def test_charset_invalido_cai_para_utf8(self):
+        texto, aviso = m.decodificar_html("São Paulo".encode("utf-8"), "off")
+        self.assertEqual(texto, "São Paulo")
+        self.assertIn("fallback UTF-8", aviso)
+
+    def test_charset_valido(self):
+        texto, aviso = m.decodificar_html("Arujá".encode("utf-8"), "utf-8")
+        self.assertEqual(texto, "Arujá")
+        self.assertIsNone(aviso)
+
+    def test_erro_de_uma_fonte_nao_interrompe_lote(self):
+        nomes = {str(i): n for i, n in enumerate(sorted({x["municipio"] for x in self.fontes}), 1)}
+        chamadas = [0]
+        def fake(url):
+            chamadas[0] += 1
+            if chamadas[0] == 2:
+                raise LookupError("unknown encoding: off")
+            return {"situacao_http": "acessivel", "familia_sugerida": "html_generico",
+                    "confianca_tecnica": "baixa", "evidencias": [], "links_promissores": [],
+                    "avisos": []}
+        rows = m.gerar_linhas(self.fontes, nomes, set(nomes), "verificar", diagnostico=fake)
+        self.assertEqual(len(rows), 22)
+        self.assertEqual(sum(x["situacao_http"] == "falha_de_analise" for x in rows), 1)
+        self.assertEqual(chamadas[0], 22)
+
     def test_siscam(self):
         d = m.classificar("<html><a href='/vereadores'>Vereadores</a></html>",
                          "https://siscam.camaraaruja.sp.gov.br/vereadores")

@@ -155,6 +155,18 @@ class MesmoHost(HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
+def decodificar_html(body, charset):
+    """Usa UTF-8 quando o servidor informa charset inválido (ex.: 'off')."""
+    nome = str(charset or "utf-8").strip() or "utf-8"
+    try:
+        texto = body.decode(nome, errors="replace")
+        return texto, None
+    except (LookupError, ValueError):
+        return body.decode("utf-8", errors="replace"), (
+            f"Charset informado pelo servidor é inválido ({nome!r}); fallback UTF-8"
+        )
+
+
 def diagnosticar(url):
     vazio = {"familia_sugerida": "desconhecida", "confianca_tecnica": "nenhuma",
              "evidencias": [], "links_promissores": [], "avisos": []}
@@ -176,7 +188,10 @@ def diagnosticar(url):
             if "text/html" not in mime and "application/xhtml+xml" not in mime:
                 raise RuntimeError("Conteúdo não é HTML")
             charset = resposta.headers.get_content_charset() or "utf-8"
-            parsed = classificar(body.decode(charset, errors="replace"), resposta.geturl())
+            texto, aviso_charset = decodificar_html(body, charset)
+            parsed = classificar(texto, resposta.geturl())
+            if aviso_charset:
+                parsed["avisos"].append(aviso_charset)
             return {**parsed, "situacao_http": "acessivel", "http_codigo": resposta.status,
                     "url_final": resposta.geturl()}
     except HTTPError as exc:
@@ -201,10 +216,16 @@ def gerar_linhas(fontes, nomes, codigos, modo, diagnostico=diagnosticar):
         for categoria in ("prefeito", "vereador"):
             f = indice.get((normalizar(nome), categoria), {})
             url = f.get("url_candidata")
-            status = (diagnostico(url) if modo == "verificar"
-                      else {"situacao_http": "nao_testada", "familia_sugerida": "desconhecida",
-                            "confianca_tecnica": "nenhuma", "evidencias": [], "links_promissores": [],
-                            "avisos": ["Catálogo não testa acesso HTTP"]})
+            try:
+                status = (diagnostico(url) if modo == "verificar"
+                          else {"situacao_http": "nao_testada", "familia_sugerida": "desconhecida",
+                                "confianca_tecnica": "nenhuma", "evidencias": [], "links_promissores": [],
+                                "avisos": ["Catálogo não testa acesso HTTP"]})
+            except (ValueError, LookupError, RuntimeError, UnicodeError, TypeError) as exc:
+                # Uma fonte defeituosa não deve abortar as outras 21 posições.
+                status = {"situacao_http": "falha_de_analise", "familia_sugerida": "desconhecida",
+                          "confianca_tecnica": "nenhuma", "evidencias": [], "links_promissores": [],
+                          "avisos": [f"Erro nesta fonte: {type(exc).__name__}: {str(exc)[:150]}"]}
             saida.append({"codigo_ibge": codigo, "municipio": nome, "categoria": categoria,
                           "url_candidata": url or "", "tipo_pagina": f.get("tipo_pagina", ""),
                           **status, "status_homologacao": "PENDENTE", "gravou_no_supabase": False})

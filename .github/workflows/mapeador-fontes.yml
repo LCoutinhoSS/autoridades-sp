@@ -1,0 +1,48 @@
+name: Mapeador Universal — Fontes Oficiais
+
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: 'Catálogo sem acessar os portais ou verificar URLs oficiais?'
+        required: true
+        type: choice
+        default: catalogo
+        options:
+          - catalogo
+          - verificar
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mapeador-fontes-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  diagnostico-rmsp-leste:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+      SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+      MODO: ${{ inputs.modo }}
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rodar testes do mapeador
+        run: python -m unittest discover -s testes -p 'test_mapeador_fontes.py' -v
+      - name: Mapear a RMSP Leste (somente leitura)
+        run: python mapeador_fontes.py --regiao rmsp --lote rmsp-leste --modo "$MODO" --saida relatorios/mapeador-fontes
+      - name: Anexar relatórios mesmo se algum portal falhar
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mapeamento-rmsp-leste-${{ inputs.modo }}
+          path: relatorios/mapeador-fontes/
+          retention-days: 14
+          if-no-files-found: warn

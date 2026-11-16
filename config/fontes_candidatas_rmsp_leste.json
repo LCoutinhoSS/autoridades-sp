@@ -1,0 +1,184 @@
+{
+  "versao": 1,
+  "regiao_operacional": "rmsp-leste",
+  "atualizado_em": "2026-11-16",
+  "observacao": "URLs candidatas para diagnóstico; não são extratores homologados.",
+  "fontes": [
+    {
+      "municipio": "Arujá",
+      "categoria": "vereador",
+      "url_candidata": "https://siscam.camaraaruja.sp.gov.br/vereadores",
+      "tipo_pagina": "lista_vereadores",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Arujá",
+      "categoria": "prefeito",
+      "url_candidata": "https://www.prefeituradearuja.sp.gov.br/",
+      "tipo_pagina": "portal_principal",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Biritiba-Mirim",
+      "categoria": "vereador",
+      "url_candidata": "https://camarabiritibamirim.sp.gov.br/vereadores/",
+      "tipo_pagina": "lista_vereadores",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Biritiba-Mirim",
+      "categoria": "prefeito",
+      "url_candidata": "https://biritibamirim.sp.gov.br/site/adm.php",
+      "tipo_pagina": "pagina_gestao",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Ferraz de Vasconcelos",
+      "categoria": "vereador",
+      "url_candidata": "https://www.ferrazdevasconcelos.sp.leg.br/vereadores.php",
+      "tipo_pagina": "lista_vereadores",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Ferraz de Vasconcelos",
+      "categoria": "prefeito",
+      "url_candidata": "https://ferrazdevasconcelos.sp.gov.br/web/prefeita/",
+      "tipo_pagina": "pagina_prefeito",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Guararema",
+      "categoria": "vereador",
+      "url_candidata": "https://cmguararema.sp.gov.br/",
+      "tipo_pagina": "portal_principal",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Guararema",
+      "categoria": "prefeito",
+      "url_candidata": "https://www.guararema.sp.gov.br/cidadao/gabinete",
+      "tipo_pagina": "pagina_gestao",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Guarulhos",
+      "categoria": "vereador",
+      "url_candidata": "https://www.guarulhos.sp.leg.br/vereadores/mandato:19a-legislatura-2025-2028-34",
+      "tipo_pagina": "lista_vereadores",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Guarulhos",
+      "categoria": "prefeito",
+      "url_candidata": "https://www.guarulhos.sp.gov.br/",
+      "tipo_pagina": "portal_principal",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Itaquaquecetuba",
+      "categoria": "vereador",
+      "url_candidata": "https://www.camaraitaquaquecetuba.sp.gov.br/vereadores",
+      "tipo_pagina": "lista_vereadores",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Itaquaquecetuba",
+      "categoria": "prefeito",
+      "url_candidata": "https://www.itaquaquecetuba.sp.gov.br/gabinete/",
+      "tipo_pagina": "pagina_gestao",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Mogi das Cruzes",
+      "categoria": "vereador",
+      "url_candidata": "https://sitenovo.cmmc.com.br/",
+      "tipo_pagina": "portal_principal",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Mogi das Cruzes",
+      "categoria": "prefeito",
+      "url_candidata": "https://site.mogidascruzes.sp.gov.br/pagina/prefeita/institucional",
+      "tipo_pagina": "pagina_prefeito",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Poá",
+      "categoria": "vereador",
+      "url_candidata": "https://camarapoa.sp.gov.br/vereadores/",
+      "tipo_pagina": "lista_vereadores",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Poá",
+      "categoria": "prefeito",
+      "url_candidata": "https://poa.sp.gov.br/cidade/noticias/gabinete-do-prefeito/",
+      "tipo_pagina": "pagina_gestao",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Salesópolis",
+      "categoria": "vereador",
+      "url_candidata": "https://www.camarasalesopolis.sp.gov.br/",
+      "tipo_pagina": "portal_principal",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Salesópolis",
+      "categoria": "prefeito",
+      "url_candidata": "https://www.salesopolis.sp.gov.br/",
+      "tipo_pagina": "portal_principal",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Santa Isabel",
+      "categoria": "vereador",
+      "url_candidata": "https://camarasantaisabel.sp.gov.br/vereadores/",
+      "tipo_pagina": "lista_vereadores",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Santa Isabel",
+      "categoria": "prefeito",
+      "url_candidata": "https://santaisabel.sp.gov.br/prefeitura/prefeito",
+      "tipo_pagina": "pagina_prefeito",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Suzano",
+      "categoria": "vereador",
+      "url_candidata": "https://www.camarasuzano.sp.gov.br/vereadores-19a-legislatura/",
+      "tipo_pagina": "lista_vereadores",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    },
+    {
+      "municipio": "Suzano",
+      "categoria": "prefeito",
+      "url_candidata": "https://suzano.sp.gov.br/gabinete-do-prefeito/prefeito/",
+      "tipo_pagina": "pagina_prefeito",
+      "estado": "candidata_para_diagnostico",
+      "plataforma_confirmada": false
+    }
+  ]
+}
